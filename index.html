@@ -1,55 +1,195 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Alexandra Hedin - Soprano</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:300" rel="stylesheet">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Alexandra Hedin</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
 
-    <style type="text/css">
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        body {
-            background: #dc5e5e;
-            color: #fff;
-            font-family: 'Quicksand', sans-serif;
-        }
-        h1,h2 {
-            font-weight: 300;
-        }
-        .wrapper {
-            height: 100%;
-            min-height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 110%;
-        }
-        .content {
-            text-align: center;
-            padding: .5rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="wrapper">
-        <div class="content">
-            <h1>Alexandra Hedin</h1>
-            <h2>soprano</h2>
+        <style type="text/css">
+            .gallery {
+                margin-left: 0;
+            }
+            .gallery__item-wrap {
+              width: 100%;
+            }
+            .gallery__item {
+                display: block;
+                padding: 0;
+                /* http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css */
+                padding-bottom: 66.67%; /* 720x480 (4:3) ratio. 100 x (480/720) = 66.666... */
+                position: relative;
+            }
+            .gallery__item__inner {
+              background: #000;
+              position: absolute;
+              top: 0;  bottom: 0;  left: 0;  right: 0;
+              padding: 0;
+            }
+
+            .gallery__item img {
+                margin: 0 auto;
+                max-height: 100%;
+            }
+            .slick-slide {
+              outline: 0;
+            }
+            .slick-prev,
+            .slick-next {
+              z-index: 1;
+            }
+            .slick-prev {
+              left: 24px;
+            }
+            .slick-next {
+              right: 24px;
+            }
+        </style>
+        <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Allura|EB+Garamond|Frank+Ruhl+Libre|Montserrat|Simonetta|Yeseva+One" rel="stylesheet">
+    </head>
+    <body>
+        <div class="band band--header">
+            <div class="band__content band__content--centered">
+                <h1 class="band__title">Alexandra Hedin</h1>
+                <h2 class="band__title band__title--small">Soprano</h2>
+            </div>
+            <div class="site-nav site-nav--header">
+                <ul class="list-inline">
+                    <li><a class="site-nav__link" href="#biography">Biography</a></li>
+                    <li><a class="site-nav__link" href="#listen">Listen</a></li>
+                    <li><a class="site-nav__link" href="#photo">Photo</a></li>
+                    <li><a class="site-nav__link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        <div id="biography" class="wrapper">
+                <h2 class="u-txt-c">Biography</h2>
+                <p>Alexandra Hedin is a young Swedish opera singer.  She recently graduated from the Academy of Music and Drama in Gothenburg where she completed her Bachelor of Arts in Opera (June 2016).
 
-      ga('create', 'UA-83362883-1', 'auto');
-      ga('send', 'pageview');
+                <p>Alexandra’s previous training has been as a student at the Stockholm Opera Studio, Kulturama, where she sang the parts of <i>Marzelline</i> in <strong>Fidelio</strong> by Beethoven and <i>Sophie</i> in <strong>Der Rosenkavalier</strong> by Strauss.</p>
 
-    </script>
-</body>
+                <p>She has prior to Kulturama also taken classes in classical singing at the Falun Conservatory of Music.</p>
+
+                <p>It was in 2013 when Alexandra was accepted for the BA course in Opera at the Academy of Arts and Drama in Gothenburg. During her 3 years in training she has been mentored by the opera singer Birgit Louise Frandsen.</p>
+
+                <p>For Alexandra’s final year exam in Gothenburg she took on the singing role of <i>Tonina</i> in Antonio Salieri’s <strong>Prima la musica e poi le parole</strong>, Musical Director and Conductor Henrik Schäfer and Director Mattias Palm.</p>
+
+                <p>In the spring of 2016 the opportunity came along for Alexandra to sing the part of <i>Mercedes</i> in Bizet’s <strong>Carmen</strong> at Åhaga in Borås, a concertante version that was conducted by Joachim Gustafsson. </p>
+
+                <p>During her opera training Alexandra has had the experience of singing in several productions and has taken on roles such as <i>Nedda</i> in an extract from <strong>Pagliacci</strong> by Leoncavallo and as <i>Captain Lovelock</i> in the opera by the same name by J Duke.  She has also participated in many master classes lead by, amongst others, Barbara Bonney, Nadia Kurem, Barbro Marklund, Gerhard Markson and Luciana Serra.</p>
+
+                <p>Throughout her training and career Alexandra has received a number of scholarships.  She has been rewarded by the Royal Swedish Academy of Music, Tobison’s Foundation, the Adlerbertska Foundation, Lasse Lönndahl’s Travel Scholarship (a foundation for music and opera talent) and Markussens Foundation.</p>
+
+                <div style="display: none;">
+                <h2 class="u-txt-c">Biografi</h2>
+
+                <p>Alexandra Hedin är en ung svensk operasångerska. Hon tog sin kandidatexamen i opera vid Högskolan för scen och musik i Göteborg i juni 2016.</p>
+
+                <p>Alexandra har tidigare utbildat sig på Operastudion, Kulturama i Stockholm, där hon har sjungit <i>Marzelline</i> i Beethovens <strong>Fidelio</strong> och <i>Sophie</i> i Strauss <strong>Rosenkavaljeren</strong>.</p>
+
+                <p>Hon har även studerat klassisk sång på Musikkonservatoriet i Falun.</p>
+
+                <p>Alexandra blev antagen till operautbildningen vid Högskolan för scen och musik i Göteborg 2013. Under dessa tre år har hon studerat sång för operasångerskan Birgit Louise Frandsen.</p>
+
+                <p>I examensproduktionen sjöng hon rollen som <i>Tonina</i> i Antonio Salieris <strong>Prima la musica e poi le parole</strong>, under ledning av dirigent Henrik Schäfer och regissör Mattias Palm.</p>
+
+                <p>Våren 2016 sjöng Alexandra rollen som <i>Mercedes</i> i en konsertant version av Bizets <strong>Carmen</strong> på Åhaga, Borås med dirigent Joachim Gustafsson.</p>
+
+                <p>Under sin utbildning har hon bl a sjungit <i>Nedda</i> i <strong>Pagliacci</strong>(utdrag) av Leoncavallo och titelrollen som <i>Captain Lovelock</i> i operan med samma namn av J Duke. Alexandra har även deltagit i master classes för Barbara Bonney, Nadia Korem, Barbro Marklund, Gerhard Markson och Luciana Serra m fl.</p>
+
+                <p>Alexandra har erhållit flera stipendier, bl a från Kungliga Musikaliska Akademien, Tobisons stipendiefond, Adlerbertska stipendiefond, Lasse Lönndahls resestipendium och Markussens stipendiefond.</p>
+                </div>
+        </div>
+        <div id="listen" class="band band--listen">
+            <div class="band__content band__content--centered">
+                <h1 class="band__title">Listen</h1>
+            </div>
+        </div>
+        <div class="wrapper" style="min-height: 100%;">
+                <h2 class="u-txt-c">Audio</h2>
+
+                <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/283746171&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false"></iframe>
+        </div>
+
+        <div id="photo" class="band band--photos">
+            <div class="band__content band__content--centered">
+                <h1 class="band__title">Photos</h1>
+            </div>
+        </div>
+        <div class="wrapper">
+                <h2 class="u-txt-c">Promotional</h2>
+        </div>
+        <div class="wrapper wrapper--wide">
+            <ul class="js-gallery gallery">
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/ahse_720.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/aIMG_2279_720.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/aIMG_2637_720.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/aIMG_2820_720.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/aIMG_2873_720.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/aIMG_2945_720.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/alex-1a.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/alex-1c.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/alex-2a.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//promo/alex-2b.jpg"></div></div></li>
+            </ul>
+        </div>
+        <div class="wrapper">
+                <h2 class="u-txt-c">Stage</h2>
+        </div>
+        <div class="wrapper wrapper--wide wrapper--mb-huge">
+            <ul class="js-gallery gallery">
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//stage/Tonina-1.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//stage/Tonina-2.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//stage/Tonina-4.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//stage/Operastudion_Rosenkavaljeren.png"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//stage/Sophie.jpg"></div></div></li>
+                <li class="gallery__item-wrap"><div class="gallery__item"><div class="gallery__item__inner"><img data-lazy="images/gallery//stage/Valencienne.jpg"></div></div></li>
+            </ul>
+        </div>
+        <div id="contact" class="band band--contact">
+            <div class="band__content band__content--centered">
+                <h1 class="band__title">Contact</h1>
+            </div>
+        </div>
+        <div class="wrapper wrapper--full-height">
+            <div class="contact-info u-txt-c">
+                <div class="contact-info__item"><h3>Email</h3><p><a href="mailto:info@alexandrahedin.se">info@alexandrahedin.se</a></p></div>
+                <div class="contact-info__item"><h3>Telephone</h3><p>+46 (0)70 657 14 41</p></div>
+            </div>
+        </div>
+        <div class="site-nav site-nav--footer">
+            <ul class="list-inline">
+                <li><a class="site-nav__link" href="#biography">Biography</a></li>
+                <li><a class="site-nav__link" href="#listen">Listen</a></li>
+                <li><a class="site-nav__link" href="#photo">Photo</a></li>
+                <li><a class="site-nav__link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+        <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+        <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script type="text/javascript">
+            $('.js-gallery').slick({
+                arrows: true,
+                // dots: true,
+                speed: 500,
+                slidesToShow: 1,
+                // fade: true,
+                // cssEase: 'linear',
+                adaptiveHeight: true,
+                lazyLoad: 'progressive',
+            });
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-83362883-1', 'auto');
+          ga('send', 'pageview');
+        </script>
+    </body>
 </html>
