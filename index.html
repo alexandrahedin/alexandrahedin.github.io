@@ -22,19 +22,19 @@
                 <h1 class="band__title">Alexandra Hedin</h1>
                 <h2 class="band__title band__title--small">Soprano</h2>
             </div>
-            <div class="site-nav site-nav--header">
-                <ul class="list-inline">
-                    <li><a class="site-nav__link" href="#biography">Biography</a></li>
-                    <li><a class="site-nav__link" href="#listen">Listen</a></li>
-                    <li><a class="site-nav__link" href="#photo">Photo</a></li>
-                    <li><a class="site-nav__link" href="#contact">Contact</a></li>
-                </ul>
-            </div>
             <div class="site-nav site-nav--lang">
               <ul class="list-inline">
                 <li class="active"><a class="site-nav__link" href="/">EN</a></li>
                 <li><a class="site-nav__link" href="/sv">SV</a></li>
               </ul>
+            </div>
+            <div class="site-nav site-nav--header">
+                <ul class="list-inline js-site-nav">
+                    <li><a class="site-nav__link" href="#biography">Biography</a></li>
+                    <li><a class="site-nav__link" href="#listen">Listen</a></li>
+                    <li><a class="site-nav__link" href="#photo">Photo</a></li>
+                    <li><a class="site-nav__link" href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
         <div id="biography" class="wrapper">
@@ -115,7 +115,7 @@
             </div>
         </div>
         <div class="site-nav site-nav--footer">
-            <ul class="list-inline">
+            <ul class="list-inline js-site-nav">
                 <li><a class="site-nav__link" href="#biography">Biography</a></li>
                 <li><a class="site-nav__link" href="#listen">Listen</a></li>
                 <li><a class="site-nav__link" href="#photo">Photo</a></li>
@@ -127,6 +127,7 @@
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+        <script type="text/javascript" src="/js/jquery.scrollTo.min.js"></script>
         <script type="text/javascript">
             $('.js-gallery').slick({
                 arrows: true,
@@ -134,6 +135,11 @@
                 slidesToShow: 1,
                 adaptiveHeight: true,
                 lazyLoad: 'progressive',
+            });
+            $('.js-site-nav a').click(function(e) {
+              e.preventDefault();
+              var href = $.attr(this, 'href');
+              $.scrollTo(href, '750');
             });
         </script>
         <script>
