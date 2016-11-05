@@ -11,57 +11,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <link rel="stylesheet" href="/css/main.min.css">
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
-        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
-
-        <style type="text/css">
-            .gallery {
-                margin-left: 0;
-            }
-            .gallery__item-wrap {
-              width: 100%;
-              /*padding: 0 12px; /* paddding between images */
-            }
-            .gallery__item {
-                display: block;
-                padding: 0;
-                /* http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css */
-                padding-bottom: 66.67%; /* 720x480 (4:3) ratio. 100 x (480/720) = 66.666... */
-                position: relative;
-            }
-
-            /*.gallery--alt .gallery__item {*/
-                /* http://stackoverflow.com/questions/1495407/maintain-the-aspect-ratio-of-a-div-with-css */
-                /*padding-bottom: 57.14%;  700x400 ratio. 100 x (400/720) = 57.142... */
-            /*}*/
-
-            .gallery__item__inner {
-              background: #000;
-              position: absolute;
-              top: 0;  bottom: 0;  left: 0;  right: 0;
-              padding: 0;
-            }
-
-            .gallery__item img {
-                margin: 0 auto;
-                max-height: 100%;
-            }
-            .slick-slide {
-              outline: 0;
-            }
-            .slick-prev,
-            .slick-next {
-              z-index: 1;
-            }
-            .slick-prev {
-              left: 24px;
-            }
-            .slick-next {
-              right: 24px;
-            }
-        </style>
-
-        <!-- <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Allura|EB+Garamond|Frank+Ruhl+Libre|Simonetta|Yeseva+One" rel="stylesheet"> -->
+        
         <link href="https://fonts.googleapis.com/css?family=Alex+Brush|Allura|EB+Garamond|Frank+Ruhl+Libre|Montserrat|Simonetta|Yeseva+One" rel="stylesheet">
     </head>
     <body>
@@ -170,69 +120,17 @@
         </div>
 
 
-<!--         <script src="https://code.jquery.com/jquery-1.12.2.min.js"></script>
-        <script src="js/script.js"></script> -->
-
-        <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-<!--         <script>
-            window.ga=function(){ga.q.push(arguments)};ga.q=[];ga.l=+new Date;
-            ga('create','UA-XXXXX-Y','auto');ga('send','pageview')
-        </script>
-        <script src="https://www.google-analytics.com/analytics.js" async defer></script> -->
         <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
         <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
         <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
         <script type="text/javascript">
             $('.js-gallery').slick({
                 arrows: true,
-                // dots: true,
                 speed: 500,
                 slidesToShow: 1,
-                // fade: true,
-                // cssEase: 'linear',
                 adaptiveHeight: true,
                 lazyLoad: 'progressive',
             });
-            // $('.js-photos__promotional').on('init', function(event, slick){
-            //   console.log('slider was initialized');
-            // });
-            // $('.js-photos__promotional').on('reInit', function(event, slick){
-            //   console.log('slider was Re-initialized');
-            // });
-            // $('.js-photos__promotional').slick({
-            //     arrows: true,
-            //     // dots: true,
-            //     speed: 500,
-            //     slidesToShow: 1,
-            //     // fade: true,
-            //     // cssEase: 'linear',
-            //     adaptiveHeight: true,
-            //     lazyLoad: 'progressive',
-            // });
-            // $('.js-photos__stage').slick({
-            //     arrows: true,
-            //     // dots: true,
-            //     speed: 500,
-            //     slidesToShow: 1,
-            //     // fade: true,
-            //     // cssEase: 'linear',
-            //     adaptiveHeight: true,
-            //     lazyLoad: 'progressive',
-            // });
-
-            // $('.js-photos__stage').slick({
-            //     dots: true,
-            //     speed: 500,
-            //     slidesToShow: 1
-            //     //variableWidth: true
-            //     //adaptiveHeight: true,
-            // });
-
-            // On before slide change
-            // $('.js-photos__promotional').on('beforeChange', function(event, slick, currentSlide, nextSlide){
-            //   console.log('beforeChange',nextSlide);
-            // });
-
         </script>
     </body>
 </html>
