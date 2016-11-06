@@ -136,6 +136,9 @@
                 adaptiveHeight: true,
                 lazyLoad: 'progressive',
             });
+            if (!("ontouchstart" in document.documentElement)) {
+			          document.documentElement.className += "js-no-touch";
+		        }
             $('.js-site-nav a').click(function(e) {
               e.preventDefault();
               var href = $.attr(this, 'href');
