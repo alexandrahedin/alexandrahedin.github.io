@@ -350,7 +350,7 @@
                 lazyLoad: 'progressive',
             });
             if (!("ontouchstart" in document.documentElement)) {
-                ocument.documentElement.className += "js-no-touch";
+                document.documentElement.className += "js-no-touch";
             }
             $('.js-site-nav a').click(function(e) {
                 e.preventDefault();
