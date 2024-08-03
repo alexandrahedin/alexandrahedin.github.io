@@ -15,7 +15,7 @@
 - [x] Footer navigation
 - [x] Swedish content
 - [x] Posthog
-- [] Github Action for deploy
+- [x] Github Action for deploy
 - [] Scroll-to for navigation
 - [] Update to Astro 4
 - [] Check PageSpeed, a11y and SEO
