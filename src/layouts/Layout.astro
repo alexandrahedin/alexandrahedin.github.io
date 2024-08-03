@@ -1,0 +1,28 @@
+---
+import PostHog from '../components/Posthog.astro'
+
+export interface Props {
+	title: string;
+	lang: 'en' | 'sv';
+	metaDescription: string;
+}
+
+const { title, lang, metaDescription } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={lang} class="font-serif lg:text-[1.125em]">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={metaDescription}>
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link href="https://fonts.googleapis.com/css?family=EB+Garamond%7CMontserrat&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+		<PostHog />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>

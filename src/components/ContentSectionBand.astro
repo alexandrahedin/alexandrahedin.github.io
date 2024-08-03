@@ -1,0 +1,57 @@
+---
+import ContentSectionBandPicture from './ContentSectionBandPicture.astro';
+
+export interface Props {
+	headerImage: ImageMetadata;
+    title?: string;
+    asHeaderTag?: boolean;
+    sectionType?: string;
+}
+
+const { headerImage, title, asHeaderTag = false, sectionType } = Astro.props;
+
+const containerClasses = [
+    'relative',
+    'min-h-screen',
+    'text-white',
+    'bg-gray-400',
+    'overflow-hidden',
+    'after:content-[""]',
+    'after:absolute',
+    'after:bg-black',
+    'after:bg-opacity-15',
+    'after:bottom-0',
+    'after:left-0',
+    'after:right-0',
+    'after:top-0',
+    'overlay-opacity'
+].join(' ');
+
+const headingClasses = [
+    'text-5xl',
+    'font-display',
+    'absolute',
+    'w-full',
+    'top-1/2',
+    '-translate-y-1/2',
+    'text-center',
+    'drop-shadow-lg',
+    'z-10',
+    'text-shadow'
+].join(' ');
+
+---
+
+{asHeaderTag ?
+<header class={containerClasses} >
+    <ContentSectionBandPicture {headerImage} {sectionType} />
+    {title && <h2 class={headingClasses} >{title}</h2>}
+    <slot />
+</header>
+:
+<div class={containerClasses}  aria-hidden="true">
+    <ContentSectionBandPicture {headerImage} {sectionType} />
+    {title && <div class={headingClasses}>{title}</div>}
+    <slot />
+</div>
+}

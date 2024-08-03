@@ -1,0 +1,23 @@
+---
+type Quote = {
+    text: string;
+    author: string;
+}
+
+export interface Props {
+    quotes: Quote[];
+}
+
+const { quotes } = Astro.props;
+---
+
+{quotes.length > 0 && (
+    <div class="pt-12">
+        {quotes.map((quote: Quote) => (
+            <blockquote class="italic mb-12">
+                <p class="text-lg before:content-['“'] after:content-['”']">{quote.text}</p>
+                <footer class="not-italic before:content-['—']"><span class="inline-block pl-1">{quote.author}</span></footer>
+            </blockquote>
+        ))}
+    </div>
+)}

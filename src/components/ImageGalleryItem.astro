@@ -1,0 +1,20 @@
+---
+import { Image } from '@astrojs/image/components';
+
+export interface Props {
+	image: ImageMetadata
+    alt: string
+    caption?: string
+}
+
+const { image, alt = '', caption } = Astro.props;
+---
+<li>
+    <a href={image.src}
+        data-pswp-width={image.width}
+        data-pswp-height={image.height}
+        target="_blank">
+        <Image src={image} alt={alt} width={292} format='webp' />
+    </a>
+    {caption && <div class="hidden-caption-content hidden" set:html={caption} />}
+</li>

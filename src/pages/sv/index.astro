@@ -1,0 +1,112 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Quotes from '../../components/Quotes.astro';
+import Biography from '../../components/content-sections/Biography.astro';
+import Contact from '../../components/content-sections/Contact.astro';
+import Listen from '../../components/content-sections/Listen.astro';
+import Photo from '../../components/content-sections/Photo.astro';
+import Upcoming from '../../components/content-sections/Upcoming.astro';
+import Header from '../../components/parts/Header.astro';
+import Footer from '../../components/parts/Footer.astro';
+
+const mainTitle = 'Alexandra Hedin';
+const subTitle = 'Sopran';
+
+const events = [
+    {
+        title: 'Sommarkonsert',
+        subTitle: 'musik av Purcell, Händel, Vivaldi m fl',
+        date: 'Söndag 2 juni kl 17.00',
+        location: 'Hovmantorps kyrka',
+        performers: [
+            { name: 'Alexandra Hedin', title: 'sopran' },
+            { name: 'Linda Andersson', title: 'sopran' },
+            { name: 'Matthijs van Gestel', title: 'violin' },
+            { name: 'Marie Louise Sjöberg', title: 'violin' },
+            { name: 'Myrte van Gestel', title: 'viola' },
+            { name: 'Christian Berg', title: 'cello' },
+        ],
+    },
+    {
+        title: '”Hjärtats sånger”',
+        subTitle: 'musik av de Frumerie, Nystroem m fl',
+        date: 'Torsdag 1 augusti kl 19.00',
+        location: 'Hovmantorps kyrka',
+        performers: [
+            { name: 'Alexandra Hedin', title: 'sopran' },
+            { name: 'Markus Kvint', title: 'piano' },
+        ],
+    },
+]
+
+const navItems = [
+    { href: '#biografi', text: 'Biografi' },
+    { href: '#lyssna', text: 'Lyssna' },
+    { href: '#Foto', text: 'Foto' },
+    { href: '#kontakt', text: 'Kontakt' },
+]
+
+// Add upcoming as the first item of the navItems array if there are events.
+if (events.length > 0) {
+    navItems.unshift({ href: '#aktuellt', text: 'Aktuellt' });
+}
+
+const showBioHeaderImage = events.length > 0;
+
+const bioQuotes = [
+    {
+        text: '…med en röstkvalitet som är sensationellt bra. Alldeles raffinerad var hennes “Porgi amor” med en timbre som fick mig att tänka på en ung Gundula Janowitz. Även “Dove sono” sjöng hon utmärkt…',
+        author: 'Sören Tranberg, Tidsskriften Opera',
+    },
+    {
+        text: '…för kvällens vackraste röst utnämner jag Alexandra Hedin som gestaltade grevinnan, Rosina. När hon sjöng sin stora aria höll jag nästan andan för att inte missa något av den vokala upplevelsen!',
+        author: 'Mogens H Andersson, Operalogg',
+    },
+    {
+        text: 'Micaela som sjöngs av sopranen Alexandra Hedin krävde föreställningens första bravo-rop, vilket var helt välförtjänt!',
+        author: 'Mogens H Andersson, Operalogg'
+    }
+];
+
+---
+
+<Layout
+	title='Alexandra Hedin'
+	lang='sv'
+	metaDescription='Sopran Alexandra Hedin'
+>
+    <Header
+        mainTitle={mainTitle}
+        subTitle={subTitle}
+        navItems={navItems}
+    />
+	<main>
+        <Upcoming
+            title='Aktuellt'
+            events={events}
+        />
+
+        <Biography
+            title='Biografi'
+            showHeaderImage={showBioHeaderImage}
+        >
+            <p>Alexandra Hedin är en svensk operasångerska från Hovmantorp, Småland. Hon tog sin kandidatexamen i opera vid Högskolan för scen och musik i Göteborg i juni 2016. Under studietiden sjöng hon bl a roller som <i>Nedda</i> i <strong>Pagliacci</strong> (Leoncavallo), <i>Mercedes</i> i <strong>Carmen</strong> (Bizet) och titelrollen som <i>Captain Lovelock</i> i operan med samma namn (J Duke).</p>
+            <p>I examensproduktionen sjöng hon rollen som <i>Tonina</i> i Salieris <strong>Prima la musica e poi le parole</strong>, under ledning av dirigent Henrik Schaefer och regissör Mattias Palm.</p>
+            <p>Efter kandidatexamen studerade Alexandra en fördjupande kurs i operainterpretation över två terminer på Högskolan för scen och musik. Där studerade hon in rollerna <i>Mimì</i> (La Boheme) och <i>Grevinnan</i> (Figaros bröllop). Hon deltog även i en operakonsert med University of Gothenburg Symphony Orchestra ledd av Henrik Schaefer, där hon sjöng <i>Alice</i> i <strong>Falstaff</strong> (utdrag).</p>
+            <p>Alexandra var också med i en kammaruppsättning av Ravels <strong>Barnet och trollerierna</strong> i rollen som <i>Prinsessan</i>, under ledning av dirigent Finn Rosengren och regi av Nils Spangenberg.</p>
+            <p>Under sin studietid har Alexandra erhållit flera stipendier, bl a från Kungliga Musikaliska Akademien, Familjen Gustav Tobisons stipendiefond, Adlerbertska stipendiefond, Lasse Lönndahls resestipendium och Markussens studiefond.</p>
+            <p>Sommaren 2017 gjorde Alexandra sin debut i rollen som <i>Grevinnan</i> i Smålandsoperans uppsättning av <strong>Figaros bröllop</strong> (Mozart). Efterföljande sommar sjöng hon återigen på Smålandsoperan, då som <i>Micaëla</i> i <strong>Carmen</strong>. Alexandra har även gjort rollen som <i>Lucy</i> i <strong>Telefonen</strong> (Menotti) som spelades på turné i Smålandsoperans regi.</p>
+            <p>Alexandra har även sjungit på Folkoperan. I <strong>Turandot</strong> (Puccini), i regi av Mellika Melouani Melani och ledd av dirigent Marit Strindlund, och i en turnéföreställning av <strong>Förklädd gud</strong> (L-E Larsson) med Malin Stenberg, regissör och Marie Rosenmir, dirigent.</p>
+            <p>Alexandra är även ofta anlitad som sopransolist i olika konsertsammanhang,  bl a i <strong>Förklädd gud</strong>, <strong>Stabat mater</strong> (Poulenc) och <strong>Stabat mater</strong> (M Löfberg).</p>
+
+            <Quotes quotes={bioQuotes} />
+		</Biography>
+
+		<Listen title='Lyssna' />
+
+        <Photo title='Foto' galleryTitle='Bildgalleri' />
+
+        <Contact title='Contact' emailTitle='E-mail' phoneTitle='Telefon' />
+	</main>
+    <Footer navItems={navItems} />
+</Layout>

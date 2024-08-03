@@ -1,0 +1,43 @@
+---
+import ContentSection from '../ContentSection.astro';
+import Event from '../Event.astro';
+
+type Performer = {
+    name: string;
+    title: string;
+}
+
+type Event = {
+    title: string;
+    subTitle: string;
+    date: string;
+    location: string;
+    performers: Performer[];
+}
+
+export interface Props {
+    title: string;
+    events: Event[];
+}
+
+const { title, events } = Astro.props;
+---
+
+{events.length > 0 && (
+    <ContentSection
+        {title}
+        withHeaderTag={false}
+    >
+        <ul class="[&_>_li+li]:pt-12 max-w-sm mx-auto mb-48">
+            {events.map((event: Event) => (
+                <Event
+                    title={event.title}
+                    subTitle={event.subTitle}
+                    date={event.date}
+                    location={event.location}
+                    performers={event.performers}
+                />
+            ))}
+        </ul>
+    </ContentSection>
+)}

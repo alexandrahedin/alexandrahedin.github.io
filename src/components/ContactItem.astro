@@ -1,0 +1,13 @@
+---
+export interface Props {
+	title: string;
+    href: string;
+    content: string;
+}
+
+const { title, href, content } = Astro.props;;
+---
+<div class="text-center">
+    <dt class="font-sans text-2xl mb-6">{title}</dt>
+    <dd class="font-sans"><a href={href} class="text-red-600 hover:underline">{content}</a>
+</div>

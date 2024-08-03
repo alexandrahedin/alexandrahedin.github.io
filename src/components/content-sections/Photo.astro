@@ -1,0 +1,20 @@
+---
+import photoImage from '../../assets/aaIMG_1188.jpg';
+import ContentSection from '../ContentSection.astro';
+import ImageGallery from '../ImageGallery.astro';
+
+export interface Props {
+    title: string;
+    galleryTitle: string;
+}
+
+const { title, galleryTitle } = Astro.props;
+---
+
+<ContentSection
+    headerImage={photoImage}
+    {title}
+    sectionType='photo'
+>
+    <ImageGallery title={galleryTitle} />
+</ContentSection>

@@ -1,0 +1,48 @@
+---
+import headerImage from '../../assets/aaIMG_1766.jpg';
+import ContentSectionBand from '../ContentSectionBand.astro';
+
+type NavItem = {
+    href: string;
+    text: string;
+}
+
+export interface Props {
+    mainTitle: string;
+    subTitle: string;
+    navItems: NavItem[];
+}
+
+const { mainTitle, subTitle, navItems } = Astro.props;
+---
+
+<ContentSectionBand
+    {headerImage}
+    asHeaderTag={true}
+>
+    <nav class="absolute top-0 left-0 w-full font-sans py-4 px-2 z-10">
+        <ul class="uppercase text-sm flex justify-center md:justify-end">
+            <li>
+                <a class="inline-block px-2 py-1 hover:underline" href="/">En</a>
+            </li>
+            <li>
+                <a class="inline-block px-2 py-1 hover:underline relative before:content-[''] before:block before:absolute before:left-0 before:h-3/4 before:w-px before:bg-white" href="/sv">Sv</a>
+            </li>
+        </ul>
+
+        {navItems.length && (
+            <ul class="flex justify-center md:justify-end [&_a]:inline-block [&_a]:p-1 [&_a:hover]:underline">
+                {navItems.map((item: NavItem) => (
+                    <li>
+                        <a href={item.href}>{item.text}</a>
+                    </li>
+                ))}
+            </ul>
+        )}
+    </nav>
+
+    <h1 class="font-display absolute w-full top-1/2 -translate-y-1/2 text-center drop-shadow-lg z-10 text-shadow">
+        <span class="block text-5xl mb-1">{mainTitle}</span>
+        <div class="text-4xl">{subTitle}</div>
+    </h1>
+</ContentSectionBand>

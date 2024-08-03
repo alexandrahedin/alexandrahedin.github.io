@@ -1,0 +1,70 @@
+---
+import { Picture } from '@astrojs/image/components';
+
+export interface Props {
+	headerImage: ImageMetadata;
+    sectionType?: string;
+}
+
+const { headerImage, sectionType } = Astro.props;
+
+let classes = 'absolute top-0 left-0 w-full h-full object-cover';
+
+if (sectionType !== undefined) {
+    classes += ` ${sectionType}`;
+}
+---
+<style>
+.biography {
+    top: -5rem !important;
+    height: calc(100% + 5rem) !important;
+    max-width: calc(100% + 20rem) !important;
+    width: calc(100% + 20rem) !important;
+    margin-left: -10rem;
+    left: 10rem !important;
+}
+
+@media screen and (min-width: 768px) {
+    .biography {
+        max-width: calc(100% + 26rem) !important;
+        width: calc(100% + 26rem) !important;
+        margin-left: -13rem;
+        left: 13rem !important;
+    }
+}
+
+/* portrait only */
+@media screen and (orientation: portrait) {
+    .listen,
+    .photo {
+        max-width: 180% !important;
+        width: 180% !important;
+        left: -80% !important;
+    }
+
+    .contact {
+        max-width: calc(100% + 15rem) !important;
+        width: calc(100% + 15rem) !important;
+        left: 15rem !important;
+        margin-left: -15rem;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-width: 768px) {
+    .listen,
+    .photo {
+        max-width: 160% !important;
+        width: 160% !important;
+        left: -60% !important;
+    }
+}
+</style>
+
+<Picture
+    src={headerImage}
+    alt=""
+    format="webp"
+    widths={[720, 1024, 1680, 1920]}
+    sizes="(max-width: 1920px) 120vw, 1920px"
+    class={classes}
+/>

@@ -1,0 +1,22 @@
+---
+import bioImage from '../../assets/band-06_1680.jpg';
+import ContentSection from '../ContentSection.astro';
+
+export interface Props {
+    title: string;
+    showHeaderImage: boolean;
+}
+
+const { title, showHeaderImage } = Astro.props;
+
+const biographyImage = showHeaderImage ? bioImage : undefined;
+---
+
+<ContentSection
+    headerImage={biographyImage}
+    {title}
+    withHeaderTag={false}
+    sectionType='biography'
+>
+    <slot />
+</ContentSection>

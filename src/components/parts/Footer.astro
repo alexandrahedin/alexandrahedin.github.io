@@ -1,0 +1,26 @@
+---
+type NavItem = {
+    href: string;
+    text: string;
+}
+
+export interface Props {
+    navItems: NavItem[];
+}
+
+const { navItems } = Astro.props;
+---
+
+{navItems.length > 0 && (
+    <footer class="pt-6 pb-4">
+        <nav class="font-sans py-4 px-2">
+                <ul class="flex justify-center [&_a]:inline-block [&_a]:p-1 [&_a]:text-red-600 [&_a:hover]:underline">
+                    {navItems.map((item: NavItem) => (
+                        <li>
+                            <a href={item.href}>{item.text}</a>
+                        </li>
+                    ))}
+                </ul>
+        </nav>
+    </footer>
+)}
