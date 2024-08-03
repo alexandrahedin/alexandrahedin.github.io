@@ -18,6 +18,7 @@
 - [x] Github Action for deploy
 - [] Scroll-to for navigation
 - [] Update to Astro 4
+- [] Update to latest Github deploy workflow (https://docs.astro.build/en/guides/deploy/github/)
 - [] Check PageSpeed, a11y and SEO
 - [] Add facad to Vimeo embeds (https://developer.chrome.com/docs/lighthouse/performance/third-party-facades/?utm_source=lighthouse&utm_medium=devtools)
 - [] Use local fonts instead of Google?
