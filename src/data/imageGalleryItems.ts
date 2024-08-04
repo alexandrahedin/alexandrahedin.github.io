@@ -18,32 +18,32 @@ export const images: GalleryImageDataItem[] = [
     {
         image: imgTheTelephone,
         alt: 'The Telephone (Menotti)',
-        caption: 'The Telephone (Menotti)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_new">Linda Himsel</a></div>',
+        caption: 'The Telephone (Menotti)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_blank">Linda Himsel</a></div>',
     },
     {
         image: imgTheTelephone2,
         alt: 'The Telephone (Menotti)',
-        caption: 'The Telephone (Menotti)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_new">Linda Himsel</a></div>',
+        caption: 'The Telephone (Menotti)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_blank">Linda Himsel</a></div>',
     },
     {
         image: figarosWedding5,
         alt: 'The Telephone (Menotti)',
-        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_new">Linda Himsel</a></div>',
+        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_blank">Linda Himsel</a></div>',
     },
     {
         image: figarosWedding4,
         alt: 'The Telephone (Menotti)',
-        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_new">Linda Himsel</a></div>',
+        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_blank">Linda Himsel</a></div>',
     },
     {
         image: figarosWedding1,
         alt: 'Le nozze di Figaro (Mozart)',
-        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_new">Linda Himsel</a></div>',
+        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_blank">Linda Himsel</a></div>',
     },
     {
         image: figarosWedding3,
         alt: 'Le nozze di Figaro (Mozart)',
-        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_new">Linda Himsel</a></div>',
+        caption: 'Le nozze di Figaro (Mozart)<div class="text-xs">photo: <a class="underline" href="//himsel.se/" target="_blank">Linda Himsel</a></div>',
     },
     {
         image: tonina1,
