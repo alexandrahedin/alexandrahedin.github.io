@@ -16,12 +16,16 @@
 - [x] Swedish content
 - [x] Posthog
 - [x] Github Action for deploy
-- [] Scroll-to for navigation
-- [] Update to Astro 4
-- [] Update to latest Github deploy workflow (https://docs.astro.build/en/guides/deploy/github/)
-- [] Check PageSpeed, a11y and SEO
-- [] Add facad to Vimeo embeds (https://developer.chrome.com/docs/lighthouse/performance/third-party-facades/?utm_source=lighthouse&utm_medium=devtools)
-- [] Use local fonts instead of Google?
+- [ ] Scroll-to for navigation
+- [ ] Update to Astro 4
+- [ ] Update to latest Github deploy workflow (https://docs.astro.build/en/guides/deploy/github/)
+- [ ] Check PageSpeed, a11y and SEO
+- [ ] Add facad to Vimeo embeds (https://developer.chrome.com/docs/lighthouse/performance/third-party-facades/?utm_source=lighthouse&utm_medium=devtools)
+- [ ] Use local fonts instead of Google?
+- [ ] Lazy-load off-screen images
+- [ ] Add possibillity to skip content of image and listen sections when tabbing with keyboard
+- [ ] Maybe use https://github.com/luwes/playerx for videos for more controll
+- [ ] Improve main nav contrast
 
 ## Astro Starter Kit: Basics
 
