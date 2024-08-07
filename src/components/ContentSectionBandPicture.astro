@@ -1,5 +1,5 @@
 ---
-import { Picture } from '@astrojs/image/components';
+import { Picture } from 'astro:assets';
 
 export interface Props {
 	headerImage: ImageMetadata;
@@ -63,7 +63,7 @@ if (sectionType !== undefined) {
 <Picture
     src={headerImage}
     alt=""
-    format='webp'
+    formats={['webp', 'avif']}
     widths={[720, 1024, 1680, 1920]}
     sizes="(max-width: 1920px) 120vw, 1920px"
     class={classes}
