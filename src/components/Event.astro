@@ -1,12 +1,12 @@
 ---
 type Performer = {
     name: string;
-    title: string;
+    title?: string;
 }
 
 export interface Props {
 	title: string;
-	subTitle: string;
+	subTitle?: string;
 	date: string;
 	location: string;
     performers: Performer[];
@@ -16,12 +16,12 @@ const { title, subTitle, date, location, performers } = Astro.props;
 ---
 <li>
     <article>
-        <h3 class="font-sans text-2xl mb-6">{title}<br>
-            <span class="text-base">{subTitle}</span>
+        <h3 class="font-sans text-2xl mb-6">{title}
+            {subTitle && (<br><span class="text-base">{subTitle}</span>)}
         </h3>
         <p class="mb-6"><i>{date}</i><br>{location}</p>
         <ul>
-            {performers.map((performer: Performer) => <li>{performer.name}, {performer.title}</li>)}
+            {performers.map((performer: Performer) => <li>{performer.name}{performer.title ? `, ${performer.title}` : ''}</li>)}
         </ul>
     </article>
 </li>
