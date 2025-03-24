@@ -4,12 +4,12 @@ import Event from '../Event.astro';
 
 type Performer = {
     name: string;
-    title: string;
+    title?: string;
 }
 
 type Event = {
     title: string;
-    subTitle: string;
+    subTitle?: string;
     date: string;
     location: string;
     performers: Performer[];
