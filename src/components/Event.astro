@@ -4,15 +4,21 @@ type Performer = {
     title?: string;
 }
 
+type Link = {
+    url: string;
+    text: string;
+}
+
 export interface Props {
 	title: string;
 	subTitle?: string;
 	date: string;
 	location: string;
     performers: Performer[];
+    link?: Link;
 }
 
-const { title, subTitle, date, location, performers } = Astro.props;
+const { title, subTitle, date, location, performers, link } = Astro.props;
 ---
 <li>
     <article>
@@ -23,5 +29,28 @@ const { title, subTitle, date, location, performers } = Astro.props;
         <ul>
             {performers.map((performer: Performer) => <li>{performer.name}{performer.title ? `, ${performer.title}` : ''}</li>)}
         </ul>
+
+        {link && (
+            <p class="mt-6">
+                <a
+                    href={link.url}
+                    class="text-red-600 hover:underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    {link.text}
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="inline-block w-4 h-4 ml-1"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                </a>
+            </p>
+        )}
     </article>
 </li>
