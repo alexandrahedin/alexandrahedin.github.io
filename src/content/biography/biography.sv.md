@@ -1,7 +1,6 @@
 ---
 title: Biography
 ---
-
 Alexandra Hedin är en svensk operasångerska från Hovmantorp, Småland. Hon tog sin kandidatexamen i opera vid Högskolan för scen och musik i Göteborg i juni 2016. Under studietiden sjöng hon bland annat roller som *Nedda* i **Pagliacci** (Leoncavallo), *Mercedes* i **Carmen** (Bizet) och titelrollen som *Captain Lovelock* i operan med samma namn (J Duke).
 
 I examensproduktionen sjöng hon rollen som *Tonina* i Salieris **Prima la musica e poi le parole**, under ledning av dirigent Henrik Schaefer och regissör Mattias Palm.
@@ -16,4 +15,4 @@ Sommaren 2017 gjorde Alexandra sin debut i rollen som *Grevinnan* i Smålandsope
 
 Alexandra har även sjungit på Folkoperan: i **Turandot** (Puccini), i regi av Mellika Melouani Melani och under ledning av dirigent Marit Strindlund, samt i en turnéföreställning av **Förklädd gud** (L-E Larsson) med regissör Malin Stenberg och dirigent Marie Rosenmir.
 
-Alexandra är även ofta anlitad som sopransolist i olika konsertsammanhang, bland annat i **Förklädd gud**, **Stabat Mater** (Poulenc) och **Stabat Mater** (M Löfberg).
+Alexandra är även ofta anlitad som sopransolist i olika konsertsammanhang, bland annat i **Förklädd gud**, **Stabat Mater** (Poulenc) och **Stabat Mater** (M Löfbergg).
