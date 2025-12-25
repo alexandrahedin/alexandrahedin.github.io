@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 
 import Layout from '../../layouts/Layout.astro';
 import Quotes from '../../components/Quotes.astro';
@@ -72,6 +72,11 @@ if (events.length > 0) {
     navItems.unshift({ href: '#aktuellt', text: 'Aktuellt' });
 }
 
+const allBioEntries = await getCollection("biography");
+const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
+
+const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
+
 const showBioHeaderImage = events.length > 0;
 
 const bioQuotes = [
@@ -107,21 +112,12 @@ const bioQuotes = [
             events={events}
         />
 
-        <Biography
-            title='Biografi'
-            showHeaderImage={showBioHeaderImage}
-        >
-            <p>Alexandra Hedin är en svensk operasångerska från Hovmantorp, Småland. Hon tog sin kandidatexamen i opera vid Högskolan för scen och musik i Göteborg i juni 2016. Under studietiden sjöng hon bl a roller som <i>Nedda</i> i <strong>Pagliacci</strong> (Leoncavallo), <i>Mercedes</i> i <strong>Carmen</strong> (Bizet) och titelrollen som <i>Captain Lovelock</i> i operan med samma namn (J Duke).</p>
-            <p>I examensproduktionen sjöng hon rollen som <i>Tonina</i> i Salieris <strong>Prima la musica e poi le parole</strong>, under ledning av dirigent Henrik Schaefer och regissör Mattias Palm.</p>
-            <p>Efter kandidatexamen studerade Alexandra en fördjupande kurs i operainterpretation över två terminer på Högskolan för scen och musik. Där studerade hon in rollerna <i>Mimì</i> (La Boheme) och <i>Grevinnan</i> (Figaros bröllop). Hon deltog även i en operakonsert med University of Gothenburg Symphony Orchestra ledd av Henrik Schaefer, där hon sjöng <i>Alice</i> i <strong>Falstaff</strong> (utdrag).</p>
-            <p>Alexandra var också med i en kammaruppsättning av Ravels <strong>Barnet och trollerierna</strong> i rollen som <i>Prinsessan</i>, under ledning av dirigent Finn Rosengren och regi av Nils Spangenberg.</p>
-            <p>Under sin studietid har Alexandra erhållit flera stipendier, bl a från Kungliga Musikaliska Akademien, Familjen Gustav Tobisons stipendiefond, Adlerbertska stipendiefond, Lasse Lönndahls resestipendium och Markussens studiefond.</p>
-            <p>Sommaren 2017 gjorde Alexandra sin debut i rollen som <i>Grevinnan</i> i Smålandsoperans uppsättning av <strong>Figaros bröllop</strong> (Mozart). Efterföljande sommar sjöng hon återigen på Smålandsoperan, då som <i>Micaëla</i> i <strong>Carmen</strong>. Alexandra har även gjort rollen som <i>Lucy</i> i <strong>Telefonen</strong> (Menotti) som spelades på turné i Smålandsoperans regi.</p>
-            <p>Alexandra har även sjungit på Folkoperan. I <strong>Turandot</strong> (Puccini), i regi av Mellika Melouani Melani och ledd av dirigent Marit Strindlund, och i en turnéföreställning av <strong>Förklädd gud</strong> (L-E Larsson) med Malin Stenberg, regissör och Marie Rosenmir, dirigent.</p>
-            <p>Alexandra är även ofta anlitad som sopransolist i olika konsertsammanhang,  bl a i <strong>Förklädd gud</strong>, <strong>Stabat mater</strong> (Poulenc) och <strong>Stabat mater</strong> (M Löfberg).</p>
 
-            <Quotes quotes={bioQuotes} />
-		</Biography>
+        <Biography title={bioEntry?.data?.title || 'Biografi' } showHeaderImage={showBioHeaderImage}>
+          {BioContent && <BioContent />}
+
+          <Quotes quotes={bioQuotes} />
+        </Biography>
 
 		<Listen title='Lyssna' />
 

@@ -1,5 +1,5 @@
 ---
-import { getEntry } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 
 import Layout from '../layouts/Layout.astro';
 import Biography from '../components/content-sections/Biography.astro';
@@ -68,6 +68,11 @@ const events = cmsEvents.map((event) => {
   };
 });
 
+const allBioEntries = await getCollection("biography");
+const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
+
+const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
+
 const navItems = [
     { href: '#biography', text: 'Biography' },
     { href: '#listen', text: 'Listen' },
@@ -100,19 +105,9 @@ const showBioHeaderImage = events.length > 0;
             events={events}
         />
 
-		<Biography
-			title='Biography'
-            showHeaderImage={showBioHeaderImage}
-		>
-			<p>Alexandra Hedin is a Swedish opera singer. She graduated from the Academy of Music and Drama in Gothenburg where she completed her Bachelor of Arts in Opera (June 2016).</p>
-			<p>During her opera training Alexandra had the experience of singing in several productions and signed up for roles such as <em>Nedda</em> in an extract from <strong>Pagliacci</strong> by Leoncavallo, <em>Mercedes</em> in Bizet’s <strong>Carmen </strong>and as <em>Captain Lovelock</em> in the opera by the same name by J Duke.&nbsp;</p>
-			<p>For Alexandra’s Bachelor final year’s exam she took on the singing role of <em>Tonina</em> in Antonio Salieri’s <strong>Prima la musica e poi le parole</strong>, Musical Director and Conductor Henrik Schaefer and Director Mattias Palm.&nbsp; After graduating she spent a year on a Masters Programme, The interpretation of opera, at the Academy of Music and Drama in Gothenburg. During this time she studied and rehearsed two different roles, that of <em>Mimì</em> (<strong>La Boheme</strong>) and <em>La Contessa</em> (<strong>Le Nozze di Figaro</strong>).</p>
-			<p>Furthermore, Alexandra has collaborated with the Symphony Orchestra at the University of Gothenburg where she sang parts from the role of <em>Alice</em> in <strong>Falstaff</strong>, conducted by Henrik Schaefer.&nbsp; This was followed by <em>La Princesse</em>, from <strong>L’enfant et les sortilèges</strong> by Ravel. This chamber production was conducted by Finn Rosengren and Directed by Nils Spangenberg.</p>
-			<p>In the summer of 2017 Smålandsoperan set up a production of&nbsp; <strong>Le Nozze di Figaro</strong> in which Alexandra made her debut as <em>La Contessa</em>.&nbsp; The following summer she returned to Smålandsoperan, singing the part of <em>Micaëla</em> in <strong>Carmen</strong>.&nbsp;</p>
-			<p>Other singing roles include <em>Lucy</em> in Menotti’s<strong> the Telephone</strong>, which went on tour and was also directed by Smålandsoperan.&nbsp; At the Folkoperan in Stockholm she has had parts in both <strong>Turandot</strong> and <strong>Förklädd Gud</strong>.</p>
-			<p>Throughout Alexandra’s training and career she has had recognition and received a number of scholarships. Notably rewards by the Royal Swedish Academy of Music, Tobison’s Foundation, the Adlerbertska Foundation, Lasse Lönndahl’s Travel Scholarship (a foundation for music and opera talent) and Markussens Foundation.</p>
-			<p>Alexandra is frequently hired to perform as soprano soloist at concerts such as <strong>Förklädd Gud</strong>, <strong>Stabat Mater </strong>(Poulenc) and <strong>Stabat Mater </strong>(M Löfberg).</p>
-		</Biography>
+    <Biography title={bioEntry?.data?.title || 'Biography' } showHeaderImage={showBioHeaderImage}>
+      {BioContent && <BioContent />}
+    </Biography>
 
 		<Listen title='Listen' />
 

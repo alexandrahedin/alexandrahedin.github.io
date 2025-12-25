@@ -1,5 +1,5 @@
 ---
-title: Biography
+title: Biografi
 ---
 Alexandra Hedin är en svensk operasångerska från Hovmantorp, Småland. Hon tog sin kandidatexamen i opera vid Högskolan för scen och musik i Göteborg i juni 2016. Under studietiden sjöng hon bland annat roller som *Nedda* i **Pagliacci** (Leoncavallo), *Mercedes* i **Carmen** (Bizet) och titelrollen som *Captain Lovelock* i operan med samma namn (J Duke).
 
@@ -13,6 +13,6 @@ Under sin studietid har Alexandra erhållit flera stipendier, bland annat från 
 
 Sommaren 2017 gjorde Alexandra sin debut i rollen som *Grevinnan* i Smålandsoperans uppsättning av **Figaros bröllop** (Mozart). Efterföljande sommar sjöng hon återigen på Smålandsoperan, då som *Micaëla* i **Carmen**. Alexandra har även gjort rollen som *Lucy* i **Telefonen** (Menotti), som spelades på turné i Smålandsoperans regi.
 
-Alexandra har även sjungit på Folkoperan: i **Turandot** (Puccini), i regi av Mellika Melouani Melani och under ledning av dirigent Marit Strindlund, samt i en turnéföreställning av **Förklädd gud** (L-E Larsson) med regissör Malin Stenberg och dirigent Marie Rosenmir.
+Alexandra har även sjungit på Folkoperan: i **Turandot** (Puccini), i regi av Mellika Melouani Melani och ledd av dirigent Marit Strindlund, och i en turnéföreställning av **Förklädd gud** (L-E Larsson) med Malin Stenberg, regissör och Marie Rosenmir, dirigent.
 
-Alexandra är även ofta anlitad som sopransolist i olika konsertsammanhang, bland annat i **Förklädd gud**, **Stabat Mater** (Poulenc) och **Stabat Mater** (M Löfbergg).
+Alexandra är även ofta anlitad som sopransolist i olika konsertsammanhang, bl a i **Förklädd gud**, **Stabat mater** (Poulenc) och **Stabat mater** (M Löfberg).
