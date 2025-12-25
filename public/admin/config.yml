@@ -19,7 +19,7 @@ collections:
       - label: "Events (English)"
         name: "events_en"
         file: "src/content/events/events.en.yml"
-        fields: &eventFields
+        fields:
           - label: "Events"
             name: "events"
             widget: "list"
@@ -49,7 +49,33 @@ collections:
       - label: "Events (Swedish)"
         name: "events_sv"
         file: "src/content/events/events.sv.yml"
-        fields: *eventFields
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
+              - { label: "Date & time", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
+              - { label: "Location", name: "location", widget: "string" }
+
+              - label: "Performers"
+                name: "performers"
+                widget: "list"
+                min: 1
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
+
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Link text", name: "text", widget: "string" }
+
   - name: "biography"
     label: "Biography"
     files:
