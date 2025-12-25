@@ -1,0 +1,69 @@
+backend:
+  name: github
+  repo: alexandrahedin/alexandrahedin.github.io
+  branch: main
+  auth_type: implicit
+
+site_url: https://alexandrahedin.se
+publish_mode: simple
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Home (English)"
+        name: "home_en"
+        file: "src/content/pages/home.en.md"
+        fields:
+          - label: "Language"
+            name: "lang"
+            widget: "hidden"
+            default: "en"
+
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.title}} (#{{fields.id}})"
+            fields:
+              - label: "Section ID"
+                name: "id"
+                widget: "string"
+                hint: "Used for anchor links, e.g. intro, work, contact"
+
+              - label: "Title"
+                name: "title"
+                widget: "string"
+
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
+
+      - label: "Home (Swedish)"
+        name: "home_sv"
+        file: "src/content/pages/home.sv.md"
+        fields:
+          - label: "Language"
+            name: "lang"
+            widget: "hidden"
+            default: "sv"
+
+          - label: "Sections"
+            name: "sections"
+            widget: "list"
+            summary: "{{fields.title}} (#{{fields.id}})"
+            fields:
+              - label: "Section ID"
+                name: "id"
+                widget: "string"
+                hint: "Used for anchor links, must match English page"
+
+              - label: "Title"
+                name: "title"
+                widget: "string"
+
+              - label: "Content"
+                name: "content"
+                widget: "markdown"
