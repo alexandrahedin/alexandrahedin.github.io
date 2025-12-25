@@ -11,59 +11,40 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: "events"
+    label: "Events"
     files:
-      - label: "Home (English)"
-        name: "home_en"
-        file: "src/content/pages/home.en.md"
-        fields:
-          - label: "Language"
-            name: "lang"
-            widget: "hidden"
-            default: "en"
-
-          - label: "Sections"
-            name: "sections"
+      - label: "Events (English)"
+        name: "events_en"
+        file: "src/content/events/events.en.yml"
+        fields: &eventFields
+          - label: "Events"
+            name: "events"
             widget: "list"
-            summary: "{{fields.title}} (#{{fields.id}})"
+            summary: "{{fields.title}} — {{fields.date}}"
             fields:
-              - label: "Section ID"
-                name: "id"
-                widget: "string"
-                hint: "Used for anchor links, e.g. intro, work, contact"
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
+              - { label: "Date & time", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
+              - { label: "Location", name: "location", widget: "string" }
 
-              - label: "Title"
-                name: "title"
-                widget: "string"
+              - label: "Performers"
+                name: "performers"
+                widget: "list"
+                min: 1
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
 
-              - label: "Content"
-                name: "content"
-                widget: "markdown"
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "URL", name: "url", widget: "string" }
+                  - { label: "Link text", name: "text", widget: "string" }
 
-      - label: "Home (Swedish)"
-        name: "home_sv"
-        file: "src/content/pages/home.sv.md"
-        fields:
-          - label: "Language"
-            name: "lang"
-            widget: "hidden"
-            default: "sv"
-
-          - label: "Sections"
-            name: "sections"
-            widget: "list"
-            summary: "{{fields.title}} (#{{fields.id}})"
-            fields:
-              - label: "Section ID"
-                name: "id"
-                widget: "string"
-                hint: "Used for anchor links, must match English page"
-
-              - label: "Title"
-                name: "title"
-                widget: "string"
-
-              - label: "Content"
-                name: "content"
-                widget: "markdown"
+      - label: "Events (Swedish)"
+        name: "events_sv"
+        file: "src/content/events/events.sv.yml"
+        fields: *eventFields

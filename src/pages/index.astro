@@ -1,4 +1,6 @@
 ---
+import { getEntry } from "astro:content";
+
 import Layout from '../layouts/Layout.astro';
 import Biography from '../components/content-sections/Biography.astro';
 import Contact from '../components/content-sections/Contact.astro';
@@ -8,143 +10,63 @@ import Upcoming from '../components/content-sections/Upcoming.astro';
 import Header from '../components/parts/Header.astro';
 import Footer from '../components/parts/Footer.astro';
 
+const lang = "en";
+
 const mainTitle = 'Alexandra Hedin';
 const subTitle = 'Soprano';
 
-const events = [
-    {
-        title: 'Midnight Mass',
-        date: 'Wednesday, December 24th at 23:30',
-        location: "Hovmantorp's church",
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Linda Andersson', title: 'piano and organ' },
-        ],
-    },
-    {
-        title: "New Year's Concert",
-        subTitle: 'with Växjö Stads Symfoniorkester',
-        date: 'Sunday, January 11th at 15:00',
-        location: 'Växjö Concert Hall',
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Miranda Sundström Freese', title: 'violin' },
-            { name: 'Maximilian Björklund', title: 'composer' },
-            { name: 'Växjö Stads Symfoniorkester' },
-            { name: 'Hans-Erik Holgersson', title: 'conductor' },
-        ],
-        link: {
-            url: 'https://www.nygatan6.se/kalender/nyarskonsert-med-vaxjo-stads-symfoniorkester-2025/',
-            text: 'More information and tickets',
-        },
-    },
-    /*
-    {
-		title: 'All Saints Day',
-		subTitle: 'Memorial service',
-		date: 'Saturday, November 1st at 16:00',
-		location: "Hovmantorp's church",
-		performers: [
-			{ name: 'Alexandra Hedin', title: 'soprano' },
-			{ name: 'Christina Johansson', title: 'piano and organ' },
-		],
-	},
-    {
-        title: 'Musik i sommarkväll',
-        date: 'Thursday, July 3rd, at 19.00',
-        location: 'Säters kyrka',
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: ' Lena Envik', title: 'mezzosoprano' },
-            { name: 'Thomas Bernhardt', title: 'piano' }
-        ],
-    },
-    {
-        title: 'Musik i sommarkväll',
-        subTitle: '"Drömlika sånger i sensommarglöden"',
-        date: 'Thursday, July 10th at 19.00',
-        location: 'Brännkyrka kyrka',
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Tobias Livheim', title: 'piano' }
-        ],
-    },
-    {
-        title: 'Musik i sommarkväll',
-        subTitle: '"Drömlika sånger i sensommarglöden"',
-        date: 'Wednesday, July 30th at 19.00',
-        location: 'S:t Tomas kyrka, Vällingby',
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Tobias Livheim', title: 'piano' }
-        ],
-    },
-    {
-        title: 'Musik i sommarkväll',
-        subTitle: '"Drömlika sånger i sensommarglöden"',
-        date: 'Thursday, August 7th at 19.00',
-        location: 'Hovmantorps kyrka',
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Tobias Livheim', title: 'piano' }
-        ],
-    },
-	{
-		title: 'Spring concert',
-		date: 'Sunday, April 6th at 17.00',
-		location: 'Lessebo kyrka',
-		performers: [
-			{ name: 'Alexandra Hedin', title: 'soprano' },
-			{ name: 'Linda Andersson', title: 'soprano' },
-			{ name: 'Glaskvartetten' },
-		],
-	},
-	{
-		title: 'Stabat mater - G B Pergolesi',
-		date: 'Wednesday, April 16th at 18.00',
-		location: 'Gustafs kyrka',
-		performers: [
-			{ name: 'Alexandra Hedin', title: 'soprano' },
-			{ name: ' Lena Envik', title: 'alt' },
-			{ name: 'Thomas Bernhardt', title: 'organ' }
-		],
-	},
-	{
-		title: 'All Saints Day',
-		subTitle: 'Memorial service',
-		date: 'Saturday, November 2nd at 16:00',
-		location: "Hovmantorp's church",
-		performers: [
-			{ name: 'Alexandra Hedin', title: 'soprano' },
-			{ name: 'Christina Johansson', title: 'piano and organ' },
-		],
-	},
-    {
-        title: 'Summer concert',
-        subTitle: 'music by Purcell, Handel, Vivaldi and others',
-        date: 'Sunday, June 2nd at 17.00',
-        location: "Hovmantorp's church",
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Linda Andersson', title: 'soprano' },
-            { name: 'Matthijs van Gestel', title: 'violin' },
-            { name: 'Marie Louise Sjöberg', title: 'violin' },
-            { name: 'Myrte van Gestel', title: 'viola' },
-            { name: 'Christian Berg', title: 'cello' },
-        ],
-    },
-    {
-        title: '”Hjärtats sånger”',
-        subTitle: 'music by de Frumerie, Nystroem and others',
-        date: 'Thursday, August 1st at 19.00',
-        location: "Hovmantorp's church",
-        performers: [
-            { name: 'Alexandra Hedin', title: 'soprano' },
-            { name: 'Markus Kvint', title: 'piano' },
-        ],
-    },
-    */
-]
+// Try to load events for this language (optional)
+const eventsEntry = await getEntry("events", `events.${lang}`);
+const rawEvents = eventsEntry?.data.events ?? [];
+
+const now = new Date();
+
+const cmsEvents = rawEvents
+  .filter((event) => new Date(event.date) >= now)
+  .sort(
+    (a, b) =>
+      new Date(a.date).getTime() - new Date(b.date).getTime()
+  );
+
+function getOrdinal(day: number) {
+  if (day > 3 && day < 21) return "th";
+  switch (day % 10) {
+    case 1:
+      return "st";
+    case 2:
+      return "nd";
+    case 3:
+      return "rd";
+    default:
+      return "th";
+  }
+}
+
+const events = cmsEvents.map((event) => {
+  const date = new Date(event.date);
+
+  const weekday = date.toLocaleDateString("en-US", {
+    weekday: "long",
+  });
+
+  const month = date.toLocaleDateString("en-US", {
+    month: "long",
+  });
+
+  const day = date.getDate();
+  const ordinal = getOrdinal(day);
+
+  const time = date.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+
+  return {
+    ...event,
+    date: `${weekday}, ${month} ${day}${ordinal} at ${time}`,
+  };
+});
 
 const navItems = [
     { href: '#biography', text: 'Biography' },
