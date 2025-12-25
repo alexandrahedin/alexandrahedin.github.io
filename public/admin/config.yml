@@ -3,91 +3,17 @@ backend:
   repo: alexandrahedin/alexandrahedin.github.io
   branch: main
 
-site_url: https://alexandrahedin.se
 auth_endpoint: https://decap-proxy.decap-auth-alexandrahedin.workers.dev
-
-publish_mode: simple
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "events"
-    label: "Events"
+  - name: "test"
+    label: "Test"
     files:
-      - label: "Events (English)"
-        name: "events_en"
-        file: "src/content/events/events.en.yml"
-        fields:
-          - label: "Events"
-            name: "events"
-            widget: "list"
-            summary: "{{fields.title}} — {{fields.date}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
-              - { label: "Date & time", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
-              - { label: "Location", name: "location", widget: "string" }
-
-              - label: "Performers"
-                name: "performers"
-                widget: "list"
-                min: 1
-                fields:
-                  - { label: "Name", name: "name", widget: "string" }
-                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
-
-              - label: "Link"
-                name: "link"
-                widget: "object"
-                required: false
-                fields:
-                  - { label: "URL", name: "url", widget: "string" }
-                  - { label: "Link text", name: "text", widget: "string" }
-
-      - label: "Events (Swedish)"
-        name: "events_sv"
-        file: "src/content/events/events.sv.yml"
-        fields:
-          - label: "Events"
-            name: "events"
-            widget: "list"
-            summary: "{{fields.title}} — {{fields.date}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
-              - { label: "Date & time", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
-              - { label: "Location", name: "location", widget: "string" }
-
-              - label: "Performers"
-                name: "performers"
-                widget: "list"
-                min: 1
-                fields:
-                  - { label: "Name", name: "name", widget: "string" }
-                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
-
-              - label: "Link"
-                name: "link"
-                widget: "object"
-                required: false
-                fields:
-                  - { label: "URL", name: "url", widget: "string" }
-                  - { label: "Link text", name: "text", widget: "string" }
-
-  - name: "biography"
-    label: "Biography"
-    files:
-      - label: "Biography (English)"
-        name: "biography_en"
-        file: "src/content/biography/biography.en.md"
+      - name: "dummy"
+        label: "Dummy"
+        file: "src/content/test/dummy.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "body", widget: "markdown" }
-
-      - label: "Biography (Swedish)"
-        name: "biography_sv"
-        file: "src/content/biography/biography.sv.md"
-        fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Content", name: "body", widget: "markdown" }
