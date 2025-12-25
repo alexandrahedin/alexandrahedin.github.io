@@ -2,9 +2,9 @@ backend:
   name: github
   repo: alexandrahedin/alexandrahedin.github.io
   branch: main
+  base_url: https://decap-proxy.decap-auth-alexandrahedin.workers.dev
 
-site_url: https://alexandrahedin-test.invalid
-auth_endpoint: https://decap-proxy.decap-auth-alexandrahedin.workers.dev
+site_url: https://alexandrahedin.se
 
 media_folder: "public/uploads"
 public_folder: "/uploads"
