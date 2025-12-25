@@ -5,6 +5,8 @@ backend:
   auth_type: implicit
 
 site_url: https://alexandrahedin.se
+auth_endpoint: https://amazing-melba-716405.netlify.app/.netlify/functions/auth
+
 publish_mode: simple
 
 media_folder: "public/uploads"
@@ -48,3 +50,19 @@ collections:
         name: "events_sv"
         file: "src/content/events/events.sv.yml"
         fields: *eventFields
+  - name: "biography"
+    label: "Biography"
+    files:
+      - label: "Biography (English)"
+        name: "biography_en"
+        file: "src/content/biography/biography.en.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "body", widget: "markdown" }
+
+      - label: "Biography (Swedish)"
+        name: "biography_sv"
+        file: "src/content/biography/biography.sv.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "body", widget: "markdown" }
