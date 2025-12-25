@@ -5,11 +5,14 @@
     <title>Content Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!-- Decap CMS -->
-    <script src="https://unpkg.com/decap-cms@3.0.12/dist/decap-cms.js"></script>
+    <!-- Netlify Identity -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
+
+    <!-- Decap CMS (DEFER IS CRITICAL) -->
+    <script src="https://unpkg.com/decap-cms@3.0.12/dist/decap-cms.js" defer></script>
   </head>
+
   <body>
-    <!-- Required for Netlify Identity -->
     <script>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user) => {
