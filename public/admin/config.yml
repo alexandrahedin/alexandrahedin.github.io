@@ -10,11 +10,82 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "test"
-    label: "Test"
+  - name: "events"
+    label: "Events"
     files:
-      - name: "dummy"
-        label: "Dummy"
-        file: "src/content/test/dummy.md"
+      - label: "Events (English)"
+        name: "events_en"
+        file: "src/content/events/events.en.yml"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
+              - { label: "Location", name: "location", widget: "string" }
+
+              - label: "Performers"
+                name: "performers"
+                widget: "list"
+                min: 1
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
+
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "URL", name: "url", widget: "string", required: false }
+                  - { label: "Link text", name: "text", widget: "string", required: false }
+      - label: "Events (Swedish)"
+        name: "events_sv"
+        file: "src/content/events/events.sv.yml"
+        fields:
+          - label: "Events"
+            name: "events"
+            widget: "list"
+            summary: "{{fields.title}} — {{fields.date}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
+              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
+              - { label: "Location", name: "location", widget: "string" }
+
+              - label: "Performers"
+                name: "performers"
+                widget: "list"
+                min: 1
+                fields:
+                  - { label: "Name", name: "name", widget: "string" }
+                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
+
+              - label: "Link"
+                name: "link"
+                widget: "object"
+                required: false
+                fields:
+                  - { label: "URL", name: "url", widget: "string", required: false }
+                  - { label: "Link text", name: "text", widget: "string", required: false }
+
+
+  - name: "biography"
+    label: "Biography"
+    files:
+      - label: "Biography (English)"
+        name: "biography_en"
+        file: "src/content/biography/biography.en.md"
         fields:
           - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "body", widget: "markdown" }
+
+      - label: "Biography (Swedish)"
+        name: "biography_sv"
+        file: "src/content/biography/biography.sv.md"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Content", name: "body", widget: "markdown" }
