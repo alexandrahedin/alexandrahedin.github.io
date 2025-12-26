@@ -17,15 +17,15 @@ collections:
     folder: "src/content/events"
     create: true
     extension: "md"
-    format: "frontmatter"
+    format: "yaml-frontmatter"
     slug: "{{date}}-{{slug}}.en"
-    preview_path_date_field: date
     filter: { field: "language", value: "en" }
     fields:
       - { label: "Language", name: "language", widget: "hidden", default: "en" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm", date_format: "YYYY-MM-DD" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { label: "Time", name: "time", widget: "string", pattern: ['^([01]?[0-9]|2[0-3]):[0-5][0-9]$', 'Must be in HH:mm format (e.g., 14:30)'] }
       - { label: "Location", name: "location", widget: "string" }
 
       - label: "Performers"
@@ -50,15 +50,15 @@ collections:
     folder: "src/content/events"
     create: true
     extension: "md"
-    format: "frontmatter"
+    format: "yaml-frontmatter"
     slug: "{{date}}-{{slug}}.sv"
-    preview_path_date_field: date
     filter: { field: "language", value: "sv" }
     fields:
       - { label: "Language", name: "language", widget: "hidden", default: "sv" }
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
-      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm", date_format: "YYYY-MM-DD" }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false, picker_utc: false }
+      - { label: "Time", name: "time", widget: "string", pattern: ['^([01]?[0-9]|2[0-3]):[0-5][0-9]$', 'Must be in HH:mm format (e.g., 14:30)'] }
       - { label: "Location", name: "location", widget: "string" }
 
       - label: "Performers"

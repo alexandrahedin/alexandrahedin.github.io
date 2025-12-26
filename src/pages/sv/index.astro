@@ -26,14 +26,22 @@ const rawEvents = allEvents.map((event) => event.data);
 const now = new Date();
 
 const cmsEvents = rawEvents
-  .filter((event) => new Date(event.date) >= now)
+  .filter((event) => {
+    // Combine date and time to create a full datetime
+    const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
+    return new Date(dateTimeString) >= now;
+  })
   .sort(
-    (a, b) =>
-      new Date(a.date).getTime() - new Date(b.date).getTime()
+    (a, b) => {
+      const aDateTime = a.time ? `${a.date}T${a.time}` : a.date;
+      const bDateTime = b.time ? `${b.date}T${b.time}` : b.date;
+      return new Date(aDateTime).getTime() - new Date(bDateTime).getTime();
+    }
   );
 
 const events = cmsEvents.map((event) => {
-  const date = new Date(event.date);
+  const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
+  const date = new Date(dateTimeString);
 
   const weekday = date.toLocaleDateString("sv-SE", {
     weekday: "long",
@@ -45,7 +53,7 @@ const events = cmsEvents.map((event) => {
     month: "long",
   });
 
-  const time = date
+  const time = event.time || date
     .toLocaleTimeString("sv-SE", {
       hour: "2-digit",
       minute: "2-digit",

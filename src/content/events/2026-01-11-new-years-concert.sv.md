@@ -2,7 +2,8 @@
 language: sv
 title: Nyårskonsert
 subTitle: med Växjö Stads Symfoniorkester
-date: 2026-01-11T15:00
+date: "2026-01-11"
+time: "15:00"
 location: Växjö Konserthus
 performers:
   - name: Alexandra Hedin

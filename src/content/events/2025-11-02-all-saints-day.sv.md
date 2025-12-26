@@ -2,7 +2,8 @@
 language: sv
 title: Alla helgons dag
 subTitle: Minnesgudstjänst
-date: 2025-11-02T16:00
+date: "2025-11-02"
+time: "16:00"
 location: Hovmantorps kyrka
 performers:
   - name: Alexandra Hedin

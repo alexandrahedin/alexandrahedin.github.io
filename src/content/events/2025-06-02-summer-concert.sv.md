@@ -2,7 +2,8 @@
 language: sv
 title: Sommarkonsert
 subTitle: musik av Purcell, Händel, Vivaldi m fl
-date: 2025-06-02T17:00
+date: "2025-06-02"
+time: "17:00"
 location: Hovmantorps kyrka
 performers:
   - name: Alexandra Hedin

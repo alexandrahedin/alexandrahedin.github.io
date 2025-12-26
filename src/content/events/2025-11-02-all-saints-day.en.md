@@ -2,7 +2,8 @@
 language: en
 title: All Saints Day
 subTitle: Memorial service
-date: 2025-11-02T16:00
+date: "2025-11-02"
+time: "16:00"
 location: Hovmantorp's church
 performers:
   - name: Alexandra Hedin
