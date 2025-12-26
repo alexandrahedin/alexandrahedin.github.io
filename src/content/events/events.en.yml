@@ -1,13 +1,4 @@
 events:
-  - title: Midnight Mass
-    date: 2025-12-24T23:30
-    location: Hovmantorp's church
-    performers:
-      - name: Alexandra Hedin
-        title: soprano
-      - name: Linda Andersson
-        title: piano and organ
-
   - title: New Year's Concert
     subTitle: with Växjö Stads Symfoniorkester
     date: 2026-01-11T15:00
@@ -25,7 +16,14 @@ events:
     link:
       url: https://www.nygatan6.se/kalender/nyarskonsert-med-vaxjo-stads-symfoniorkester-2025/
       text: More information and tickets
-
+  - title: Midnight Mass
+    date: 2025-12-24T23:30
+    location: Hovmantorp's church
+    performers:
+      - name: Alexandra Hedin
+        title: soprano
+      - name: Linda Andersson
+        title: piano and organ
   - title: All Saints Day
     subTitle: Memorial service
     date: 2025-11-01T16:00
@@ -35,7 +33,6 @@ events:
         title: soprano
       - name: Christina Johansson
         title: piano and organ
-
   - title: Musik i sommarkväll
     date: 2025-07-03T19:00
     location: Säters kyrka
@@ -46,7 +43,6 @@ events:
         title: mezzosoprano
       - name: Thomas Bernhardt
         title: piano
-
   - title: Musik i sommarkväll
     subTitle: Drömlika sånger i sensommarglöden
     date: 2025-07-10T19:00
@@ -56,7 +52,6 @@ events:
         title: soprano
       - name: Tobias Livheim
         title: piano
-
   - title: Musik i sommarkväll
     subTitle: Drömlika sånger i sensommarglöden
     date: 2025-07-30T19:00
@@ -66,7 +61,6 @@ events:
         title: soprano
       - name: Tobias Livheim
         title: piano
-
   - title: Musik i sommarkväll
     subTitle: Drömlika sånger i sensommarglöden
     date: 2025-08-07T19:00
@@ -76,7 +70,6 @@ events:
         title: soprano
       - name: Tobias Livheim
         title: piano
-
   - title: Spring concert
     date: 2025-04-06T17:00
     location: Lessebo kyrka
@@ -86,7 +79,6 @@ events:
       - name: Linda Andersson
         title: soprano
       - name: Glaskvartetten
-
   - title: Stabat mater – G B Pergolesi
     date: 2025-04-16T18:00
     location: Gustafs kyrka
@@ -97,7 +89,6 @@ events:
         title: alto
       - name: Thomas Bernhardt
         title: organ
-
   - title: All Saints Day
     subTitle: Memorial service
     date: 2025-11-02T16:00
@@ -107,7 +98,6 @@ events:
         title: soprano
       - name: Christina Johansson
         title: piano and organ
-
   - title: Summer concert
     subTitle: music by Purcell, Handel, Vivaldi and others
     date: 2025-06-02T17:00
@@ -125,10 +115,11 @@ events:
         title: viola
       - name: Christian Berg
         title: cello
-
+    link:
+      url: https://www.svenskakyrkan.se/lessebo
   - title: Hjärtats sånger
     subTitle: music by de Frumerie, Nystroem and others
-    date: 2025-08-01T19:00
+    date: 2025-08-01T19:01
     location: Hovmantorp's church
     performers:
       - name: Alexandra Hedin
