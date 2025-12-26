@@ -20,6 +20,8 @@ collections:
     format: "yaml-frontmatter"
     slug: "{{date}}-{{slug}}.en"
     filter: { field: "language", value: "en" }
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ['date', 'title']
     fields:
       - { label: "Language", name: "language", widget: "hidden", default: "en" }
       - { label: "Title", name: "title", widget: "string" }
@@ -53,6 +55,8 @@ collections:
     format: "yaml-frontmatter"
     slug: "{{date}}-{{slug}}.sv"
     filter: { field: "language", value: "sv" }
+    summary: "{{date}} — {{title}}"
+    sortable_fields: ['date', 'title']
     fields:
       - { label: "Language", name: "language", widget: "hidden", default: "sv" }
       - { label: "Title", name: "title", widget: "string" }
