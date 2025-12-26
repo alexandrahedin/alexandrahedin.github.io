@@ -1,5 +1,4 @@
 ---
-language: en
 title: Hjärtats sånger
 subTitle: music by de Frumerie, Nystroem and others
 date: "2025-08-01"

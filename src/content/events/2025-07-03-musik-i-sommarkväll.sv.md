@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Musik i sommarkväll
 date: "2025-07-03"
 time: "19:00"

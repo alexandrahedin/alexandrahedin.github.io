@@ -1,5 +1,4 @@
 ---
-language: en
 title: Summer concert
 subTitle: music by Purcell, Handel, Vivaldi and others
 date: "2025-06-02"

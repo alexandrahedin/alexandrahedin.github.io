@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Alla helgons dag
 subTitle: Minnesgudstjänst
 date: "2025-11-02"

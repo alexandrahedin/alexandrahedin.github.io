@@ -1,5 +1,4 @@
 ---
-language: en
 title: All Saints Day
 subTitle: Memorial service
 date: "2025-11-01"

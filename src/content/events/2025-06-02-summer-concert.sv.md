@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Sommarkonsert
 subTitle: musik av Purcell, Händel, Vivaldi m fl
 date: "2025-06-02"

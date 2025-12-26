@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Musik i sommarkväll
 subTitle: Drömlika sånger i sensommarglöden
 date: "2025-07-30"

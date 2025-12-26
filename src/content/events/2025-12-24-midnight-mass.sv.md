@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Midnattsmässa
 date: "2025-12-24"
 time: "23:30"

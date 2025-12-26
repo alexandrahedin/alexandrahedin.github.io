@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Vårkonsert
 date: "2025-04-06"
 time: "17:00"

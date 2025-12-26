@@ -1,5 +1,4 @@
 ---
-language: en
 title: Midnight Mass
 date: "2025-12-24"
 time: "23:30"

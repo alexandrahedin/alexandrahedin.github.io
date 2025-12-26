@@ -1,5 +1,4 @@
 ---
-language: en
 title: New Year's Concert
 subTitle: with Växjö Stads Symfoniorkester
 date: "2026-01-11"

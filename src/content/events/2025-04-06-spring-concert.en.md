@@ -1,5 +1,4 @@
 ---
-language: en
 title: Spring concert
 date: "2025-04-06"
 time: "17:00"

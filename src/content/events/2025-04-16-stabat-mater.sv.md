@@ -1,5 +1,4 @@
 ---
-language: sv
 title: Stabat mater – G B Pergolesi
 date: "2025-04-16"
 time: "18:00"
