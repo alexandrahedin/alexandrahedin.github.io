@@ -11,67 +11,71 @@ media_folder: "public/uploads"
 public_folder: "/uploads"
 
 collections:
-  - name: "events"
-    label: "Events"
-    files:
-      - label: "Events (English)"
-        name: "events_en"
-        file: "src/content/events/events.en.yml"
+  - name: "events_en"
+    label: "Events (English)"
+    label_singular: "Event"
+    folder: "src/content/events"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{date}}-{{slug}}.en"
+    preview_path_date_field: date
+    filter: { field: "language", value: "en" }
+    fields:
+      - { label: "Language", name: "language", widget: "hidden", default: "en" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm", date_format: "YYYY-MM-DD" }
+      - { label: "Location", name: "location", widget: "string" }
+
+      - label: "Performers"
+        name: "performers"
+        widget: "list"
+        min: 1
         fields:
-          - label: "Events"
-            name: "events"
-            widget: "list"
-            summary: "{{fields.title}} — {{fields.date}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
-              - { label: "Location", name: "location", widget: "string" }
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Role / Instrument", name: "title", widget: "string", required: false }
 
-              - label: "Performers"
-                name: "performers"
-                widget: "list"
-                min: 1
-                fields:
-                  - { label: "Name", name: "name", widget: "string" }
-                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
-
-              - label: "Link"
-                name: "link"
-                widget: "object"
-                required: false
-                fields:
-                  - { label: "URL", name: "url", widget: "string", required: false }
-                  - { label: "Link text", name: "text", widget: "string", required: false }
-      - label: "Events (Swedish)"
-        name: "events_sv"
-        file: "src/content/events/events.sv.yml"
+      - label: "Link"
+        name: "link"
+        widget: "object"
+        required: false
         fields:
-          - label: "Events"
-            name: "events"
-            widget: "list"
-            summary: "{{fields.title}} — {{fields.date}}"
-            fields:
-              - { label: "Title", name: "title", widget: "string" }
-              - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
-              - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm" }
-              - { label: "Location", name: "location", widget: "string" }
+          - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "Link text", name: "text", widget: "string", required: false }
 
-              - label: "Performers"
-                name: "performers"
-                widget: "list"
-                min: 1
-                fields:
-                  - { label: "Name", name: "name", widget: "string" }
-                  - { label: "Role / Instrument", name: "title", widget: "string", required: false }
+  - name: "events_sv"
+    label: "Events (Swedish)"
+    label_singular: "Event"
+    folder: "src/content/events"
+    create: true
+    extension: "md"
+    format: "frontmatter"
+    slug: "{{date}}-{{slug}}.sv"
+    preview_path_date_field: date
+    filter: { field: "language", value: "sv" }
+    fields:
+      - { label: "Language", name: "language", widget: "hidden", default: "sv" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Subtitle", name: "subTitle", widget: "string", required: false }
+      - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DDTHH:mm", date_format: "YYYY-MM-DD" }
+      - { label: "Location", name: "location", widget: "string" }
 
-              - label: "Link"
-                name: "link"
-                widget: "object"
-                required: false
-                fields:
-                  - { label: "URL", name: "url", widget: "string", required: false }
-                  - { label: "Link text", name: "text", widget: "string", required: false }
+      - label: "Performers"
+        name: "performers"
+        widget: "list"
+        min: 1
+        fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "Role / Instrument", name: "title", widget: "string", required: false }
+
+      - label: "Link"
+        name: "link"
+        widget: "object"
+        required: false
+        fields:
+          - { label: "URL", name: "url", widget: "string", required: false }
+          - { label: "Link text", name: "text", widget: "string", required: false }
 
 
   - name: "biography"

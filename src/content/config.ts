@@ -10,6 +10,7 @@ const performerSchema = z.object({
 });
 
 const eventSchema = z.object({
+  language: z.string().optional(),
   title: z.string().min(1),
   subTitle: z.string().optional(),
   date: z
@@ -25,7 +26,8 @@ const eventSchema = z.object({
       url: z.string().url(),
       text: z.string().min(1),
     })
-    .optional(),
+    .optional()
+    .nullable(),
 });
 
 /* --------------------
@@ -40,10 +42,8 @@ const biography = defineCollection({
 });
 
 const events = defineCollection({
-  type: "data",
-  schema: z.object({
-    events: z.array(eventSchema).default([]),
-  }),
+  type: "content",
+  schema: eventSchema,
 });
 
 export const collections = {

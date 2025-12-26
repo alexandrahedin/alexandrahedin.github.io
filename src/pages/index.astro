@@ -15,9 +15,12 @@ const lang = "en";
 const mainTitle = 'Alexandra Hedin';
 const subTitle = 'Soprano';
 
-// Try to load events for this language (optional)
-const eventsEntry = await getEntry("events", `events.${lang}`);
-const rawEvents = eventsEntry?.data.events ?? [];
+// Load all events for this language
+const allEvents = await getCollection("events", ({ id }) => {
+  return id.endsWith(`.${lang}.md`);
+});
+
+const rawEvents = allEvents.map((event) => event.data);
 
 const now = new Date();
 
