@@ -1,11 +1,14 @@
 ---
 title: Midnattsmässa
-date: "2025-12-24"
-time: "23:30"
+subTitle: ''
+date: 2025-12-24
+time: 23:30
 location: Hovmantorps kyrka
+alwaysShow: true
 performers:
   - name: Alexandra Hedin
     title: sopran
-  - name: Linda Andersson
+  - name: Joakim Nilsson
     title: piano och orgel
 ---
+
