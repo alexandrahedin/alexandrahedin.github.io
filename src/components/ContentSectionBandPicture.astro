@@ -4,9 +4,10 @@ import { Picture } from 'astro:assets';
 export interface Props {
 	headerImage: ImageMetadata;
     sectionType?: string;
+    fetchpriority?: 'high' | 'low' | 'auto';
 }
 
-const { headerImage, sectionType } = Astro.props;
+const { headerImage, sectionType, fetchpriority = 'auto' } = Astro.props;
 
 let classes = 'absolute top-0 left-0 w-full h-full object-cover';
 
@@ -67,4 +68,7 @@ if (sectionType !== undefined) {
     widths={[720, 1024, 1680, 1920]}
     sizes="(max-width: 1920px) 120vw, 1920px"
     class={classes}
+    loading={fetchpriority === 'high' ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchpriority={fetchpriority}
 />
