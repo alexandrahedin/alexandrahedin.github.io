@@ -91,6 +91,30 @@ const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
 
 const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
 
+// Load all gallery items for this language
+const allGalleryItems = await getCollection("gallery", ({ id }) => {
+  return id.endsWith(`.${lang}.md`);
+});
+
+// Import all gallery images
+const galleryImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/gallery/*.jpg', { eager: true });
+
+const galleryItems = allGalleryItems
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(item => {
+    const imagePath = `../../assets/gallery/${item.data.image}`;
+    const image = galleryImages[imagePath]?.default;
+    if (!image) {
+      console.warn(`Image not found: ${imagePath}`);
+    }
+    return {
+      title: item.data.title,
+      image: image,
+      caption: item.data.caption,
+    };
+  })
+  .filter(item => item.image !== undefined);
+
 const showBioHeaderImage = events.length > 0;
 
 const bioQuotes = [
@@ -135,7 +159,7 @@ const bioQuotes = [
 
 		<Listen title='Lyssna' skipLinkText='Hoppa över videor' />
 
-        <Photo title='Foto' galleryTitle='Bildgalleri' skipLinkText='Hoppa över galleri' />
+        <Photo title='Foto' galleryTitle='Bildgalleri' skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
 
         <Contact title='Kontakt' emailTitle='E-mail' phoneTitle='Telefon' />
 	</main>
