@@ -99,26 +99,24 @@ const videoItems = videos.map(video => ({
   customContainerStyle: video.data.customContainerStyle || '',
 }));
 
-// Load all gallery items for this language
-const allGalleryItems = await getCollection("gallery", ({ id }) => {
-  return id.endsWith(`.${lang}.md`);
-});
+// Load gallery for this language
+const allGalleryEntries = await getCollection("gallery");
+const galleryEntry = allGalleryEntries.find(e => e.id === `gallery.${lang}.md`);
 
 // Import all gallery images
 const galleryImages = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.jpg', { eager: true });
 
-const galleryItems = allGalleryItems
-  .sort((a, b) => a.data.order - b.data.order)
+const galleryItems = (galleryEntry?.data?.items || [])
   .map(item => {
-    const imagePath = `../assets/gallery/${item.data.image}`;
+    const imagePath = `../assets/gallery/${item.image}`;
     const image = galleryImages[imagePath]?.default;
     if (!image) {
       console.warn(`Image not found: ${imagePath}`);
     }
     return {
-      title: item.data.title,
+      title: item.title,
       image: image,
-      caption: item.data.caption,
+      caption: item.caption,
     };
   })
   .filter(item => item.image !== undefined);

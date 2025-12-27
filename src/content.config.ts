@@ -37,11 +37,10 @@ const eventSchema = z.object({
   alwaysShow: z.boolean().optional().default(false),
 });
 
-const gallerySchema = z.object({
+const galleryItemSchema = z.object({
   title: z.string().min(1),
   caption: z.string().optional(),
   image: z.string().min(1), // filename in src/assets/gallery/
-  order: z.number().int().min(0),
 });
 
 const videoSchema = z.object({
@@ -76,7 +75,9 @@ const events = defineCollection({
 
 const gallery = defineCollection({
   type: "content",
-  schema: gallerySchema,
+  schema: z.object({
+    items: z.array(galleryItemSchema),
+  }),
 });
 
 const videos = defineCollection({
