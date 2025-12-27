@@ -76,7 +76,7 @@ collections:
             i18n: true
             summary: '{{fields.author}}'
             label_singular: "Quote"
-            collapsed: false
+            collapsed: true
             fields:
               - { label: "Text", name: "text", widget: "text", i18n: true }
               - { label: "Author", name: "author", widget: "string", i18n: true }
