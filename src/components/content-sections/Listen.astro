@@ -4,9 +4,10 @@ import ContentSection from '../ContentSection.astro';
 
 export interface Props {
     title: string;
+    skipLinkText?: string;
 }
 
-const { title } = Astro.props;
+const { title, skipLinkText } = Astro.props;
 
 const vimeoVideos = [
     {
@@ -49,6 +50,8 @@ const vimeoVideos = [
     {title}
     maxWidth='max-w-4xl'
     sectionType='listen'
+    skipToSection='photo'
+    {skipLinkText}
 >
     <ul>
         {vimeoVideos.map((vimeoVideo) => (

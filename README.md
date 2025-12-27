@@ -58,10 +58,9 @@ Existing events without this field will continue to work normally (auto-hidden a
 - [x] Update to latest Github deploy workflow (https://docs.astro.build/en/guides/deploy/github/)
 - [x] Check PageSpeed, a11y and SEO
 - [x] Use local fonts instead of Google?
-- [ ] Use local version of lite-vimeo-embed instead of jsdelivery?
 - [x] Lazy-load off-screen images
-- [ ] Add possibility to skip content of image and listen sections when tabbing with keyboard
-- [ ] Maybe use https://github.com/luwes/playerx for videos for more controll
+- [x] Add possibility to skip content of image and listen sections when tabbing with keyboard
+- [x] Update to Astro 5
 - [ ] Improve main nav contrast
 
 ## Performance Optimizations

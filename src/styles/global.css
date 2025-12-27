@@ -34,3 +34,24 @@
 @utility bg-opacity-15 {
   background-color: rgba(0, 0, 0, 0.15);
 }
+
+/* Skip link for accessibility - visible only on focus */
+.skip-link {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+
+.skip-link:focus {
+  opacity: 1;
+  height: auto;
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}

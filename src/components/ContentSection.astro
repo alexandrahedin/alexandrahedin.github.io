@@ -7,14 +7,19 @@ export interface Props {
     withHeaderTag?: boolean;
     maxWidth?: string;
     sectionType?: string;
+    skipToSection?: string;
+    skipLinkText?: string;
 }
 
-const { headerImage, title, withHeaderTag = true, maxWidth = 'max-w-prose', sectionType } = Astro.props;
+const { headerImage, title, withHeaderTag = true, maxWidth = 'max-w-prose', sectionType, skipToSection, skipLinkText } = Astro.props;
 ---
 <section id={title.toLocaleLowerCase()}>
     {headerImage && <ContentSectionBand {headerImage} {title} asHeaderTag={withHeaderTag} {sectionType} />}
     <div class={`py-12 px-4 [&_>_p]:mb-6 ${maxWidth} mx-auto`}>
         {(!withHeaderTag || !headerImage) && <h2 class="font-sans text-center text-3xl mb-12">{title}</h2>}
+        {skipToSection && skipLinkText && (
+            <a href={`#${skipToSection}`} class="skip-link font-sans">{skipLinkText}</a>
+        )}
         <slot />
     </div>
 </section>
