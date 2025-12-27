@@ -1,5 +1,57 @@
 # Alexandrahedin.se
 
+## Performance Optimizations
+
+This site uses several optimizations for fast loading:
+
+### Image Size Recommendations
+
+**Before adding images to `src/assets/`**, resize them to reduce build times:
+
+**Header images** (full-screen backgrounds):
+- Max width: **2000-2500px**
+- Keeps file sizes around 500KB-1MB
+- Perfect quality for 4K displays
+
+**Gallery images**:
+- Max width: **1200-1500px**
+- Thumbnails are auto-generated at 292px
+
+**Resize images with macOS built-in `sips` command:**
+
+```bash
+# Resize a single image to 2000px max dimension (preserving aspect ratio)
+sips -Z 2000 src/assets/your-image.jpg
+
+# Resize all JPGs in src/assets folder
+for img in src/assets/*.jpg; do sips -Z 2000 "$img"; done
+
+# Resize all JPGs in gallery folder
+for img in src/assets/gallery/*.jpg; do sips -Z 1500 "$img"; done
+```
+
+**Build time impact:**
+- 10MB images: ~3+ minutes build time
+- 500KB-1MB images: ~60-90 seconds build time
+
+### Image Optimization Cache
+
+The GitHub Actions workflow caches optimized images to speed up deployments. When images in `src/assets/` haven't changed, the build reuses previously optimized files instead of regenerating all image variants.
+
+**To bypass the cache** (force regeneration of all images):
+1. Go to GitHub repository → Actions tab
+2. Click "Caches" in the left sidebar
+3. Delete caches starting with `astro-images-`
+4. Next deployment will regenerate all images
+
+The cache automatically invalidates when any file in `src/assets/` changes.
+
+### Other Optimizations
+- **Lazy-loaded Vimeo embeds** - Scripts load only when scrolling near videos
+- **Lazy-loaded images** - Gallery and header images load on-demand
+- **AVIF + WebP formats** - Modern image formats for 30-50% smaller files
+- **Local fonts** - No external font requests
+
 ## TODO:
 
 - [x] Styling for ContentSection header images
