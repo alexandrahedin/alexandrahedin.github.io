@@ -1,5 +1,33 @@
 # Alexandrahedin.se
 
+A portfolio website for soprano Alexandra Hedin, built with Astro and optimized for performance.
+
+## Tech Stack
+
+### Core Framework
+- **[Astro](https://astro.build/)** v5 - Static site generator with content collections
+
+### Content Management
+- **[Sveltia CMS](https://github.com/sveltia/sveltia-cms)** - Git-based CMS for managing events and biography
+  - Access admin at `/admin/` (requires GitHub authentication)
+  - Content stored as Markdown files in `src/content/`
+  - Configuration: `public/admin/config.yml`
+  - Compatible with Netlify CMS format
+
+### Styling & UI
+- **[Tailwind CSS](https://tailwindcss.com/)** v4 - Utility-first CSS framework with Vite plugin
+- **[PhotoSwipe](https://photoswipe.com/)** v5 - Responsive lightbox gallery
+
+### Media
+- **[lite-vimeo-embed](https://github.com/luwes/lite-vimeo-embed)** - Lightweight Vimeo embed facade (loaded via CDN)
+- **[Sharp](https://sharp.pixelplumbing.com/)** - High-performance image optimization (AVIF, WebP, JPEG)
+
+### Analytics
+- **[PostHog](https://posthog.com/)** - Privacy-friendly analytics (deferred loading for performance)
+
+### Fonts
+- EB Garamond & Montserrat - Self-hosted for performance
+
 ## TODO:
 
 - [x] Styling for ContentSection header images
