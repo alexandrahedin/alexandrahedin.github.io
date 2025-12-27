@@ -65,3 +65,31 @@ const vimeoVideos = [
         ))}
     </ul>
 </ContentSection>
+
+<script>
+    // Lazy load the Vimeo embed script only when this section is visible
+    // This saves ~8KB and avoids loading Vimeo resources on every page
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                // Load the lite-vimeo script
+                const script = document.createElement('script');
+                script.type = 'module';
+                script.src = 'https://cdn.jsdelivr.net/npm/lite-vimeo-embed/+esm';
+                document.head.appendChild(script);
+                
+                // Stop observing after loading once
+                observer.disconnect();
+            }
+        });
+    }, {
+        // Start loading when section is 200px away from viewport
+        rootMargin: '200px'
+    });
+    
+    // Observe the first video element
+    const firstVideo = document.querySelector('lite-vimeo');
+    if (firstVideo) {
+        observer.observe(firstVideo);
+    }
+</script>
