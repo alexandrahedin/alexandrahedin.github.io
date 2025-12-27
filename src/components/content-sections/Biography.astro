@@ -1,13 +1,20 @@
 ---
 import bioImage from '../../assets/band-06_1680.jpg';
 import ContentSection from '../ContentSection.astro';
+import Quotes from '../Quotes.astro';
+
+type Quote = {
+    text: string;
+    author: string;
+}
 
 export interface Props {
     title: string;
     showHeaderImage: boolean;
+    quotes?: Quote[];
 }
 
-const { title, showHeaderImage } = Astro.props;
+const { title, showHeaderImage, quotes = [] } = Astro.props;
 
 const biographyImage = showHeaderImage ? bioImage : undefined;
 ---
@@ -19,4 +26,5 @@ const biographyImage = showHeaderImage ? bioImage : undefined;
     sectionType='biography'
 >
     <slot />
+    <Quotes quotes={quotes} />
 </ContentSection>

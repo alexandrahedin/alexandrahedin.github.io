@@ -56,10 +56,16 @@ const videoSchema = z.object({
    Collections
 -------------------- */
 
+const quoteSchema = z.object({
+  text: z.string().min(1),
+  author: z.string().min(1),
+});
+
 const biography = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string().min(1),
+    quotes: z.array(quoteSchema).optional(),
   }),
 });
 

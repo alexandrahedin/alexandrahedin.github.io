@@ -2,7 +2,6 @@
 import { getEntry, getCollection } from "astro:content";
 
 import Layout from '../../layouts/Layout.astro';
-import Quotes from '../../components/Quotes.astro';
 import Biography from '../../components/content-sections/Biography.astro';
 import Contact from '../../components/content-sections/Contact.astro';
 import Listen from '../../components/content-sections/Listen.astro';
@@ -129,20 +128,6 @@ const galleryItems = allGalleryItems
 
 const showBioHeaderImage = events.length > 0;
 
-const bioQuotes = [
-    {
-        text: '…med en röstkvalitet som är sensationellt bra. Alldeles raffinerad var hennes “Porgi amor” med en timbre som fick mig att tänka på en ung Gundula Janowitz. Även “Dove sono” sjöng hon utmärkt…',
-        author: 'Sören Tranberg, Tidsskriften Opera',
-    },
-    {
-        text: '…för kvällens vackraste röst utnämner jag Alexandra Hedin som gestaltade grevinnan, Rosina. När hon sjöng sin stora aria höll jag nästan andan för att inte missa något av den vokala upplevelsen!',
-        author: 'Mogens H Andersson, Operalogg',
-    },
-    {
-        text: 'Micaela som sjöngs av sopranen Alexandra Hedin krävde föreställningens första bravo-rop, vilket var helt välförtjänt!',
-        author: 'Mogens H Andersson, Operalogg'
-    }
-];
 
 ---
 
@@ -163,10 +148,8 @@ const bioQuotes = [
         />
 
 
-        <Biography title={bioEntry?.data?.title || 'Biografi' } showHeaderImage={showBioHeaderImage}>
+        <Biography title={bioEntry?.data?.title || 'Biografi' } showHeaderImage={showBioHeaderImage} quotes={bioEntry?.data?.quotes || []}>
           {BioContent && <BioContent />}
-
-          <Quotes quotes={bioQuotes} />
         </Biography>
 
 		<Listen title='Lyssna' skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />

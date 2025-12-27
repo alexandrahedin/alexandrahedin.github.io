@@ -155,7 +155,7 @@ const showBioHeaderImage = events.length > 0;
             events={events}
         />
 
-    <Biography title={bioEntry?.data?.title || 'Biography' } showHeaderImage={showBioHeaderImage}>
+    <Biography title={bioEntry?.data?.title || 'Biography' } showHeaderImage={showBioHeaderImage} quotes={bioEntry?.data?.quotes || []}>
       {BioContent && <BioContent />}
     </Biography>
 

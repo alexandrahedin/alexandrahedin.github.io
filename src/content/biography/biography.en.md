@@ -1,5 +1,6 @@
 ---
 title: Biography
+quotes: []
 ---
 
 Alexandra Hedin is a Swedish opera singer. She graduated from the Academy of Music and Drama in Gothenburg where she completed her Bachelor of Arts in Opera (June 2016).

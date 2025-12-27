@@ -69,6 +69,17 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string", i18n: true }
           - { label: "Content", name: "body", widget: "markdown", i18n: true }
+          - label: "Quotes"
+            name: "quotes"
+            widget: "list"
+            required: false
+            i18n: true
+            summary: '{{fields.author}}'
+            label_singular: "Quote"
+            collapsed: false
+            fields:
+              - { label: "Text", name: "text", widget: "text", i18n: true }
+              - { label: "Author", name: "author", widget: "string", i18n: true }
 
   - name: "gallery"
     label: "Gallery"
