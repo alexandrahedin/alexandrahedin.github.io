@@ -15,7 +15,7 @@ export interface Props {
 	date: string;
 	location: string;
     performers: Performer[];
-    link?: Link;
+    link?: Link | null;
 }
 
 const { title, subTitle, date, location, performers, link } = Astro.props;

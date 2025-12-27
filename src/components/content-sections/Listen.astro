@@ -6,44 +6,14 @@ export interface Props {
     title: string;
     skipLinkText?: string;
     playVideoLabel?: string;
+    videos: Array<{
+        title: string;
+        vimeoId: string;
+        customContainerStyle?: string;
+    }>;
 }
 
-const { title, skipLinkText, playVideoLabel = 'Play video' } = Astro.props;
-
-const vimeoVideos = [
-    {
-        id: 1127992277,
-        title: 'Deh se piacer (Vitellia) La clemenza di Tito - W A Mozart',
-        customContainerStyle: ''
-    },
-    {
-        id: 1127995118,
-        title: 'Che fiero momento (Euridice) Orfeo ed Euridice - C W Gluck',
-        customContainerStyle: ''
-    },
-    // {
-    //     id: 829553989,
-    //     title: 'Qual vita é questa mai… Che fiero momento (Euridice) - Orfeo ed Euridice - C W Gluck',
-    //     variant: 'custom',
-    //     customContainerStyle: ' aspect-ratio: 343/248;'
-    // },
-    // {
-    //     id: 830853799,
-    //     title: 'Tanto amore segreto (Liù) - Turandot - Puccini',
-    //     variant: 'custom',
-    //     customContainerStyle: ' aspect-ratio: 343/248;'
-    // },
-    {
-        id: 294648968,
-        title: 'Je dis que rien m’épouvante (Micaëla) - Carmen - Bizet',
-        customContainerStyle: ''
-    },
-    {
-        id: 240281788,
-        title: 'Dove sono i bei momenti (La Contessa) - Le nozze di Figaro - Mozart',
-        customContainerStyle: ''
-    }
-];
+const { title, skipLinkText, playVideoLabel = 'Play video', videos } = Astro.props;
 ---
 
 <ContentSection
@@ -55,16 +25,16 @@ const vimeoVideos = [
     {skipLinkText}
 >
     <ul>
-        {vimeoVideos.map((vimeoVideo) => (
+        {videos.map((video) => (
             <li class="mb-12 lg:mb-24 ">
-                <h3 class="font-sans lg:text-lg mb-4">{vimeoVideo.title}</h3>
+                <h3 class="font-sans lg:text-lg mb-4">{video.title}</h3>
                 <lite-vimeo
-                    videoid={vimeoVideo.id}
+                    videoid={video.vimeoId}
                     class="[&_>_iframe]:bg-black"
-                    style={`background-image: url('https://i.vimeocdn.com/video/${vimeoVideo.id}.webp?mw=1600&mh=900&q=70');${vimeoVideo.customContainerStyle}`}
+                    style={`background-image: url('https://i.vimeocdn.com/video/${video.vimeoId}.webp?mw=1600&mh=900&q=70');${video.customContainerStyle}`}
                     tabindex="0"
                     role="button"
-                    aria-label={`${playVideoLabel}: ${vimeoVideo.title}`}
+                    aria-label={`${playVideoLabel}: ${video.title}`}
                 >
                     <div class="ltv-playbtn"></div>
                 </lite-vimeo>

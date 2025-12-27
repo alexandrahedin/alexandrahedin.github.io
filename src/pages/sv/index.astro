@@ -91,6 +91,18 @@ const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
 
 const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
 
+// Load all videos for this language
+const allVideos = await getCollection("videos", ({ id, data }) => {
+  return id.endsWith(`.${lang}.md`) && data.published;
+});
+
+const videos = allVideos.sort((a, b) => a.data.order - b.data.order);
+const videoItems = videos.map(video => ({
+  title: video.data.title,
+  vimeoId: video.data.vimeoId.toString(),
+  customContainerStyle: video.data.customContainerStyle || '',
+}));
+
 // Load all gallery items for this language
 const allGalleryItems = await getCollection("gallery", ({ id }) => {
   return id.endsWith(`.${lang}.md`);
@@ -157,7 +169,7 @@ const bioQuotes = [
           <Quotes quotes={bioQuotes} />
         </Biography>
 
-		<Listen title='Lyssna' skipLinkText='Hoppa över videor' playVideoLabel='Spela video' />
+		<Listen title='Lyssna' skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />
 
         <Photo title='Foto' galleryTitle='Bildgalleri' skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
 
