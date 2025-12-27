@@ -53,7 +53,7 @@ Existing events without this field will continue to work normally (auto-hidden a
 - [x] Swedish content
 - [x] Posthog
 - [x] Github Action for deploy
-- [ ] Scroll-to for navigation
+- [x] Scroll-to for navigation
 - [x] Update to Astro 4
 - [x] Update to latest Github deploy workflow (https://docs.astro.build/en/guides/deploy/github/)
 - [x] Check PageSpeed, a11y and SEO

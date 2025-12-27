@@ -24,5 +24,33 @@ const { title, lang, metaDescription } = Astro.props;
 	</head>
 	<body>
 		<slot />
+		<script>
+			// Smooth scroll handling for anchor links - deferred for performance
+			document.addEventListener('click', (e) => {
+				const target = e.target as HTMLElement;
+				const link = target.closest('a[href^="#"]') as HTMLAnchorElement;
+				
+				if (!link) return;
+				
+				const href = link.getAttribute('href');
+				if (!href || href === '#') return;
+				
+				const targetId = href.slice(1);
+				const targetElement = document.getElementById(targetId);
+				
+				if (targetElement) {
+					e.preventDefault();
+					
+					// Smooth scroll to target
+					targetElement.scrollIntoView({ 
+						behavior: 'smooth', 
+						block: 'start' 
+					});
+					
+					// Update URL without causing a jump
+					history.pushState(null, '', href);
+				}
+			}, { passive: false });
+		</script>
 	</body>
 </html>
