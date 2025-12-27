@@ -87,6 +87,30 @@ const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
 
 const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
 
+// Load all gallery items for this language
+const allGalleryItems = await getCollection("gallery", ({ id }) => {
+  return id.endsWith(`.${lang}.md`);
+});
+
+// Import all gallery images
+const galleryImages = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.jpg', { eager: true });
+
+const galleryItems = allGalleryItems
+  .sort((a, b) => a.data.order - b.data.order)
+  .map(item => {
+    const imagePath = `../assets/gallery/${item.data.image}`;
+    const image = galleryImages[imagePath]?.default;
+    if (!image) {
+      console.warn(`Image not found: ${imagePath}`);
+    }
+    return {
+      title: item.data.title,
+      image: image,
+      caption: item.data.caption,
+    };
+  })
+  .filter(item => item.image !== undefined);
+
 const navItems = [
     { href: '#biography', text: 'Biography' },
     { href: '#listen', text: 'Listen' },
@@ -125,7 +149,7 @@ const showBioHeaderImage = events.length > 0;
 
 		<Listen title='Listen' skipLinkText='Skip videos' />
 
-        <Photo title='Photo' galleryTitle='Gallery' skipLinkText='Skip gallery' />
+        <Photo title='Photo' galleryTitle='Gallery' skipLinkText='Skip gallery' galleryItems={galleryItems} />
 
         <Contact title='Contact' emailTitle='Email' phoneTitle='Telephone' />
 	</main>

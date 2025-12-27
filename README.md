@@ -23,6 +23,24 @@ A portfolio website for soprano Alexandra Hedin, built with Astro and optimized 
 
 Existing events without this field will continue to work normally (auto-hidden after date passes).
 
+#### Managing Gallery
+
+Gallery items are managed through the CMS as content collections with full localization support:
+- Access gallery management in the CMS admin
+- Add images to `src/assets/gallery/` directory (they will be optimized by Astro on build)
+- In CMS, specify just the filename (e.g., `my-photo.jpg`)
+- Define display order using the "Order" field (0, 1, 2...)
+- Add optional captions with HTML support for credits
+- Fully localized titles and captions per language
+
+**Adding new images:**
+1. Resize images to max 1200-1500px width (see Performance Optimizations below)
+2. Add JPG file to `src/assets/gallery/` directory
+3. In CMS, create gallery item and enter just the filename in the "Image" field
+4. Images are automatically optimized to AVIF, WebP, and JPEG formats on build
+
+**Note**: Gallery images must be in `src/assets/gallery/` to be processed by Astro's image optimization.
+
 ### Styling & UI
 - **[Tailwind CSS](https://tailwindcss.com/)** v4 - Utility-first CSS framework with Vite plugin
 - **[PhotoSwipe](https://photoswipe.com/)** v5 - Responsive lightbox gallery

@@ -69,3 +69,24 @@ collections:
         fields:
           - { label: "Title", name: "title", widget: "string", i18n: true }
           - { label: "Content", name: "body", widget: "markdown", i18n: true }
+
+  - name: "gallery"
+    label: "Gallery"
+    label_singular: "Gallery Item"
+    folder: "src/content/gallery"
+    create: true
+    icon: "image"
+    extension: "md"
+    format: "yaml-frontmatter"
+    slug: "{{order}}-{{slug}}"
+    summary: "{{order}} — {{title}}"
+    sortable_fields: ['order', 'title']
+    i18n: true
+    media_folder: "/src/assets/gallery"
+    public_folder: ""
+    fields:
+      - { label: "Title", name: "title", widget: "string", i18n: true }
+      - { label: "Order", name: "order", widget: "number", value_type: "int", min: 0, hint: "Display order in gallery (0, 1, 2...)", i18n: duplicate }
+      - { label: "Image", name: "image", widget: "image", hint: "Upload image (will be stored in src/assets/gallery/ and optimized on build)", i18n: duplicate }
+      - { label: "Caption", name: "caption", widget: "text", required: false, hint: "Optional caption with HTML support (e.g., credits)", i18n: true }
+
