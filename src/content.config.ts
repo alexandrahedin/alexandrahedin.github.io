@@ -34,6 +34,7 @@ const eventSchema = z.object({
     })
     .optional()
     .nullable(),
+  alwaysShow: z.boolean().optional().default(false),
 });
 
 /* --------------------

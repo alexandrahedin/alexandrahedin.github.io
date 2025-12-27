@@ -26,6 +26,9 @@ const now = new Date();
 
 const cmsEvents = rawEvents
   .filter((event) => {
+    // Show if alwaysShow is true, or if the event is in the future
+    if (event.alwaysShow) return true;
+    
     // Combine date and time to create a full datetime
     const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
     return new Date(dateTimeString) >= now;

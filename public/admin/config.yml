@@ -35,6 +35,7 @@ collections:
       - { label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD", time_format: false, picker_utc: false, i18n: duplicate }
       - { label: "Time", name: "time", widget: "string", pattern: ['^([01]?[0-9]|2[0-3]):[0-5][0-9]$', 'Must be in HH:mm format (e.g., 14:30)'], i18n: duplicate }
       - { label: "Location", name: "location", widget: "string", i18n: true }
+      - { label: "Always Show", name: "alwaysShow", widget: "boolean", default: false, required: false, hint: "Keep this event visible in Upcoming section even after the date has passed", i18n: duplicate }
 
       - label: "Performers"
         name: "performers"

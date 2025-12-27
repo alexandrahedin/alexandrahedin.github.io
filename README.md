@@ -14,6 +14,15 @@ A portfolio website for soprano Alexandra Hedin, built with Astro and optimized 
   - Configuration: `public/admin/config.yml`
   - Compatible with Netlify CMS format
 
+#### Managing Events
+
+**Always Show Feature**: Check the "Always Show" checkbox on an event to keep it visible in the Upcoming section even after the date has passed. This is useful for:
+- Featured or important events you want to highlight
+- Events with flexible or ongoing scheduling
+- Past events that should remain visible for reference
+
+Existing events without this field will continue to work normally (auto-hidden after date passes).
+
 ### Styling & UI
 - **[Tailwind CSS](https://tailwindcss.com/)** v4 - Utility-first CSS framework with Vite plugin
 - **[PhotoSwipe](https://photoswipe.com/)** v5 - Responsive lightbox gallery
@@ -48,10 +57,9 @@ A portfolio website for soprano Alexandra Hedin, built with Astro and optimized 
 - [x] Update to Astro 4
 - [x] Update to latest Github deploy workflow (https://docs.astro.build/en/guides/deploy/github/)
 - [x] Check PageSpeed, a11y and SEO
-- [ ] Add facad to Vimeo embeds (https://developer.chrome.com/docs/lighthouse/performance/third-party-facades/?utm_source=lighthouse&utm_medium=devtools)
 - [x] Use local fonts instead of Google?
 - [ ] Use local version of lite-vimeo-embed instead of jsdelivery?
-- [ ] Lazy-load off-screen images
+- [x] Lazy-load off-screen images
 - [ ] Add possibility to skip content of image and listen sections when tabbing with keyboard
 - [ ] Maybe use https://github.com/luwes/playerx for videos for more controll
 - [ ] Improve main nav contrast
