@@ -24,7 +24,8 @@ const { title, lang, metaDescription } = Astro.props;
 	</head>
 	<body>
 		<slot />
-		<script>
+		<!-- This causes more trouble than its worth. Lets skip it for now -->
+		<!-- <script>
 			// Smooth scroll handling for anchor links - deferred for performance
 			document.addEventListener('click', (e) => {
 				const target = e.target as HTMLElement;
@@ -51,6 +52,6 @@ const { title, lang, metaDescription } = Astro.props;
 					history.pushState(null, '', href);
 				}
 			}, { passive: false });
-		</script>
+		</script> -->
 	</body>
 </html>
