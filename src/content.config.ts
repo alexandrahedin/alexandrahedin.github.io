@@ -72,6 +72,13 @@ const events = defineCollection({
   schema: eventSchema,
 });
 
+const upcoming = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string().min(1),
+  }),
+});
+
 const gallery = defineCollection({
   type: "content",
   schema: z.object({
@@ -116,6 +123,7 @@ const contact = defineCollection({
 export const collections = {
   biography,
   events,
+  upcoming,
   gallery,
   videos,
   settings,

@@ -132,6 +132,10 @@ const galleryItems = (galleryEntry?.data?.items || [])
 
 const showBioHeaderImage = events.length > 0;
 
+// Load upcoming for this language
+const allUpcomingEntries = await getCollection("upcoming");
+const upcomingEntry = allUpcomingEntries.find(e => e.id === `upcoming.${lang}.md`);
+
 // Load contact for this language
 const allContactEntries = await getCollection("contact");
 const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
@@ -151,7 +155,7 @@ const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
     />
 	<main>
         <Upcoming
-            title='Aktuellt'
+            title={upcomingEntry?.data?.title || 'Aktuellt'}
             events={events}
         />
 
