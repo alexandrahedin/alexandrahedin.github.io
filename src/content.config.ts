@@ -43,12 +43,11 @@ const galleryItemSchema = z.object({
   image: z.string().min(1), // filename in src/assets/gallery/
 });
 
-const videoSchema = z.object({
+const videoItemSchema = z.object({
   title: z.string().min(1),
   vimeoId: z.number().int().positive(),
   customContainerStyle: z.string().optional().default(''),
   published: z.boolean().default(true),
-  order: z.number().int().min(0),
 });
 
 /* --------------------
@@ -82,7 +81,9 @@ const gallery = defineCollection({
 
 const videos = defineCollection({
   type: "content",
-  schema: videoSchema,
+  schema: z.object({
+    items: z.array(videoItemSchema),
+  }),
 });
 
 export const collections = {

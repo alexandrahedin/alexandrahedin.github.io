@@ -107,20 +107,26 @@ collections:
 
   - name: "videos"
     label: "Videos"
-    label_singular: "Video"
-    folder: "src/content/videos"
-    create: true
     icon: "play_circle"
-    extension: "md"
-    format: "yaml-frontmatter"
-    slug: "{{order}}-{{slug}}"
-    summary: "{{order}} — {{title}} {{#published}}✓{{/published}}{{^published}}✗{{/published}}"
-    sortable_fields: ['order', 'title', 'published']
-    i18n: true
-    fields:
-      - { label: "Title", name: "title", widget: "string", hint: "Video title (e.g., composer, work, role)", i18n: true }
-      - { label: "Order", name: "order", widget: "number", value_type: "int", min: 0, hint: "Display order on Listen page (0, 1, 2...)", i18n: duplicate }
-      - { label: "Vimeo ID", name: "vimeoId", widget: "number", value_type: "int", hint: "The numeric ID from Vimeo video URL (e.g., 1127992277)", i18n: duplicate }
-      - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to hide this video from the website", i18n: duplicate }
-      - { label: "Custom Container Style", name: "customContainerStyle", widget: "string", required: false, hint: "Optional Tailwind CSS for non-standard aspect ratios (e.g., 'aspect-ratio: 343/248;'). Leave empty for standard 16:9 videos.", i18n: duplicate }
+    i18n:
+      structure: multiple_files
+      locales: [en, sv]
+    files:
+      - label: "Videos"
+        name: "videos"
+        file: "src/content/videos/videos.{{locale}}.md"
+        i18n: true
+        fields:
+          - label: "Items"
+            name: "items"
+            widget: "list"
+            label_singular: "Video"
+            summary: "{{title}} {{#published}}✓{{/published}}{{^published}}✗{{/published}}"
+            collapsed: true
+            i18n: true
+            fields:
+              - { label: "Title", name: "title", widget: "string", hint: "Video title (e.g., composer, work, role)", i18n: true }
+              - { label: "Vimeo ID", name: "vimeoId", widget: "number", value_type: "int", hint: "The numeric ID from Vimeo video URL (e.g., 1127992277)", i18n: duplicate }
+              - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to hide this video from the website", i18n: duplicate }
+              - { label: "Custom Container Style", name: "customContainerStyle", widget: "string", required: false, hint: "Optional Tailwind CSS for non-standard aspect ratios (e.g., 'aspect-ratio: 343/248;'). Leave empty for standard 16:9 videos.", i18n: duplicate }
 

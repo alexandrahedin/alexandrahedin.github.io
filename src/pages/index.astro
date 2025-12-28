@@ -87,17 +87,17 @@ const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
 
 const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
 
-// Load all videos for this language
-const allVideos = await getCollection("videos", ({ id, data }) => {
-  return id.endsWith(`.${lang}.md`) && data.published;
-});
+// Load videos for this language
+const allVideoEntries = await getCollection("videos");
+const videoEntry = allVideoEntries.find(e => e.id === `videos.${lang}.md`);
 
-const videos = allVideos.sort((a, b) => a.data.order - b.data.order);
-const videoItems = videos.map(video => ({
-  title: video.data.title,
-  vimeoId: video.data.vimeoId.toString(),
-  customContainerStyle: video.data.customContainerStyle || '',
-}));
+const videoItems = videoEntry?.data?.items
+  ?.filter(item => item.published)
+  .map(item => ({
+    title: item.title,
+    vimeoId: item.vimeoId.toString(),
+    customContainerStyle: item.customContainerStyle || '',
+  })) || [];
 
 // Load gallery for this language
 const allGalleryEntries = await getCollection("gallery");
