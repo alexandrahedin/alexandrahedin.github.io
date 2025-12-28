@@ -168,9 +168,9 @@ const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
       {BioContent && <BioContent />}
     </Biography>
 
-		<Listen title='Listen' skipLinkText='Skip videos' playVideoLabel='Play video' videos={videoItems} />
+		<Listen title={videoEntry?.data?.title || 'Listen'} skipLinkText='Skip videos' playVideoLabel='Play video' videos={videoItems} />
 
-        <Photo title='Photo' galleryTitle='Gallery' skipLinkText='Skip gallery' galleryItems={galleryItems} />
+        <Photo title={galleryEntry?.data?.title || 'Photo'} galleryTitle={galleryEntry?.data?.galleryTitle || 'Gallery'} skipLinkText='Skip gallery' galleryItems={galleryItems} />
 
         <Contact 
             title={contactEntry?.data?.title || 'Contact'}

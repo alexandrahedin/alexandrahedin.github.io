@@ -75,6 +75,8 @@ const events = defineCollection({
 const gallery = defineCollection({
   type: "content",
   schema: z.object({
+    title: z.string().min(1),
+    galleryTitle: z.string().min(1),
     items: z.array(galleryItemSchema),
   }),
 });
@@ -82,6 +84,7 @@ const gallery = defineCollection({
 const videos = defineCollection({
   type: "content",
   schema: z.object({
+    title: z.string().min(1),
     items: z.array(videoItemSchema),
   }),
 });

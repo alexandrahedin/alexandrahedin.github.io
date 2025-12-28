@@ -1,4 +1,6 @@
 ---
+title: Foto
+galleryTitle: Bildgalleri
 items:
   - title: The Telephone (Menotti)
     image: alexandra_hedin_the_telephone_720.jpg

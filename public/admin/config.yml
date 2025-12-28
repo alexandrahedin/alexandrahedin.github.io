@@ -55,9 +55,9 @@ collections:
           - { label: "URL", name: "url", widget: "string", required: true, i18n: true }
           - { label: "Link text", name: "text", widget: "string", required: true, i18n: true }
 
-  - name: "biography"
-    label: "Biography"
-    icon: "person_book"
+  - name: "content-sections"
+    label: "Content Sections"
+    icon: "view_agenda"
     i18n:
       structure: multiple_files
       locales: [en, sv]
@@ -81,18 +81,13 @@ collections:
               - { label: "Text", name: "text", widget: "text", i18n: true }
               - { label: "Author", name: "author", widget: "string", i18n: true }
 
-  - name: "gallery"
-    label: "Gallery"
-    icon: "image"
-    i18n:
-      structure: multiple_files
-      locales: [en, sv]
-    files:
       - label: "Gallery"
         name: "gallery"
         file: "src/content/gallery/gallery.{{locale}}.md"
         i18n: true
         fields:
+          - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Photo)", i18n: true }
+          - { label: "Gallery Title", name: "galleryTitle", widget: "string", hint: "Gallery subtitle (e.g., Gallery)", i18n: true }
           - label: "Gallery Items"
             name: "items"
             widget: "list"
@@ -105,18 +100,12 @@ collections:
               - { label: "Image", name: "image", widget: "image", hint: "Upload image (will be stored in src/assets/gallery/ and optimized on build)", i18n: duplicate, media_folder: "/src/assets/gallery", public_folder: "" }
               - { label: "Caption", name: "caption", widget: "text", required: false, hint: "Optional caption with HTML support (e.g., credits)", i18n: true }
 
-  - name: "videos"
-    label: "Videos"
-    icon: "play_circle"
-    i18n:
-      structure: multiple_files
-      locales: [en, sv]
-    files:
       - label: "Videos"
         name: "videos"
         file: "src/content/videos/videos.{{locale}}.md"
         i18n: true
         fields:
+          - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Listen)", i18n: true }
           - label: "Items"
             name: "items"
             widget: "list"
@@ -129,6 +118,19 @@ collections:
               - { label: "Vimeo ID", name: "vimeoId", widget: "number", value_type: "int", hint: "The numeric ID from Vimeo video URL (e.g., 1127992277)", i18n: duplicate }
               - { label: "Hidden", name: "hidden", widget: "boolean", required: false, hint: "Check to hide this video from the website", i18n: duplicate }
               - { label: "Custom Container Style", name: "customContainerStyle", widget: "string", required: false, hint: "Optional Tailwind CSS for non-standard aspect ratios (e.g., 'aspect-ratio: 343/248;'). Leave empty for standard 16:9 videos.", i18n: duplicate }
+
+      - label: "Contact"
+        name: "contact"
+        file: "src/content/contact/contact.{{locale}}.md"
+        i18n: true
+        fields:
+          - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Contact)", i18n: true }
+          - { label: "Email Title", name: "emailTitle", widget: "string", hint: "Label for email contact (e.g., Email)", i18n: true }
+          - { label: "Email Address", name: "emailHref", widget: "string", hint: "Email address (e.g., info@alexandrahedin.se)", i18n: duplicate }
+          - { label: "Email Display Text", name: "emailText", widget: "string", hint: "Email text shown to users (e.g., info@alexandrahedin.se)", i18n: duplicate }
+          - { label: "Phone Title", name: "phoneTitle", widget: "string", hint: "Label for phone contact (e.g., Telephone)", i18n: true }
+          - { label: "Phone Number", name: "phoneHref", widget: "string", hint: "Phone number with country code (e.g., +46706571441)", i18n: duplicate }
+          - { label: "Phone Display Text", name: "phoneText", widget: "string", hint: "Phone text shown to users (e.g., +46 70 657 14 41)", i18n: duplicate }
 
   - name: "settings"
     label: "Settings"
@@ -147,23 +149,3 @@ collections:
           - { label: "Header Main Title", name: "headerMainTitle", widget: "string", hint: "Main title in page header", i18n: true }
           - { label: "Header Subtitle", name: "headerSubtitle", widget: "string", hint: "Subtitle in page header", i18n: true }
           - { label: "PostHog ID", name: "posthogId", widget: "string", required: false, hint: "PostHog analytics project ID (starts with phc_)", i18n: duplicate }
-
-  - name: "contact"
-    label: "Contact"
-    icon: "email"
-    i18n:
-      structure: multiple_files
-      locales: [en, sv]
-    files:
-      - label: "Contact"
-        name: "contact"
-        file: "src/content/contact/contact.{{locale}}.md"
-        i18n: true
-        fields:
-          - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Contact)", i18n: true }
-          - { label: "Email Title", name: "emailTitle", widget: "string", hint: "Label for email contact (e.g., Email)", i18n: true }
-          - { label: "Email Address", name: "emailHref", widget: "string", hint: "Email address (e.g., info@alexandrahedin.se)", i18n: duplicate }
-          - { label: "Email Display Text", name: "emailText", widget: "string", hint: "Email text shown to users (e.g., info@alexandrahedin.se)", i18n: duplicate }
-          - { label: "Phone Title", name: "phoneTitle", widget: "string", hint: "Label for phone contact (e.g., Telephone)", i18n: true }
-          - { label: "Phone Number", name: "phoneHref", widget: "string", hint: "Phone number with country code (e.g., +46706571441)", i18n: duplicate }
-          - { label: "Phone Display Text", name: "phoneText", widget: "string", hint: "Phone text shown to users (e.g., +46 70 657 14 41)", i18n: duplicate }

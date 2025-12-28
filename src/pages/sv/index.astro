@@ -160,9 +160,9 @@ const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
           {BioContent && <BioContent />}
         </Biography>
 
-		<Listen title='Lyssna' skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />
+		<Listen title={videoEntry?.data?.title || 'Lyssna'} skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />
 
-        <Photo title='Foto' galleryTitle='Bildgalleri' skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
+        <Photo title={galleryEntry?.data?.title || 'Foto'} galleryTitle={galleryEntry?.data?.galleryTitle || 'Bildgalleri'} skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
 
         <Contact 
             title={contactEntry?.data?.title || 'Kontakt'}
