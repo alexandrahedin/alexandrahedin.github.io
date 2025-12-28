@@ -1,6 +1,4 @@
 ---
-import { getEntry, getCollection } from "astro:content";
-
 import Layout from '../layouts/Layout.astro';
 import Biography from '../components/content-sections/Biography.astro';
 import Contact from '../components/content-sections/Contact.astro';
@@ -9,110 +7,15 @@ import Photo from '../components/content-sections/Photo.astro';
 import Upcoming from '../components/content-sections/Upcoming.astro';
 import Header from '../components/parts/Header.astro';
 import Footer from '../components/parts/Footer.astro';
+import { getPageData } from '../lib/pageUtils';
 
 const lang = "en";
-
-// Load settings for this language
-const allSettingsEntries = await getCollection("settings");
-const settingsEntry = allSettingsEntries.find(e => e.id === `settings.${lang}.md`);
-
-const pageTitle = settingsEntry?.data?.pageTitle || '';
-const metaDescription = settingsEntry?.data?.metaDescription || '';
-const mainTitle = settingsEntry?.data?.headerMainTitle || '';
-const subTitle = settingsEntry?.data?.headerSubtitle || '';
-
-// Load all events for this language
-const allEvents = await getCollection("events", ({ id }) => {
-  return id.endsWith(`.${lang}.md`);
-});
-
-const rawEvents = allEvents.map((event) => event.data);
-
-const now = new Date();
-
-const cmsEvents = rawEvents
-  .filter((event) => {
-    // Show if alwaysShow is true, or if the event is in the future
-    if (event.alwaysShow) return true;
-    
-    // Combine date and time to create a full datetime
-    const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
-    return new Date(dateTimeString) >= now;
-  })
-  .sort(
-    (a, b) => {
-      const aDateTime = a.time ? `${a.date}T${a.time}` : a.date;
-      const bDateTime = b.time ? `${b.date}T${b.time}` : b.date;
-      return new Date(aDateTime).getTime() - new Date(bDateTime).getTime();
-    }
-  );
-
-function getOrdinal(day: number) {
-  if (day > 3 && day < 21) return "th";
-  switch (day % 10) {
-    case 1:
-      return "st";
-    case 2:
-      return "nd";
-    case 3:
-      return "rd";
-    default:
-      return "th";
-  }
-}
-
-const events = cmsEvents.map((event) => {
-  const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
-  const date = new Date(dateTimeString);
-
-  const weekday = date.toLocaleDateString("en-US", {
-    weekday: "long",
-  });
-
-  const month = date.toLocaleDateString("en-US", {
-    month: "long",
-  });
-
-  const day = date.getDate();
-  const ordinal = getOrdinal(day);
-
-  const time = event.time || date.toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: false,
-  });
-
-  return {
-    ...event,
-    date: `${weekday}, ${month} ${day}${ordinal} at ${time}`,
-  };
-});
-
-const allBioEntries = await getCollection("biography");
-const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
-
-const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
-
-// Load videos for this language
-const allVideoEntries = await getCollection("videos");
-const videoEntry = allVideoEntries.find(e => e.id === `videos.${lang}.md`);
-
-const videoItems = videoEntry?.data?.items
-  ?.filter(item => !item.hidden)
-  .map(item => ({
-    title: item.title,
-    vimeoId: item.vimeoId.toString(),
-    customContainerStyle: item.customContainerStyle || '',
-  })) || [];
-
-// Load gallery for this language
-const allGalleryEntries = await getCollection("gallery");
-const galleryEntry = allGalleryEntries.find(e => e.id === `gallery.${lang}.md`);
+const { settings, events, bio, video, gallery, upcoming, contact } = await getPageData(lang);
 
 // Import all gallery images
 const galleryImages = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.jpg', { eager: true });
 
-const galleryItems = (galleryEntry?.data?.items || [])
+const galleryItems = (gallery?.data?.items || [])
   .map(item => {
     const imagePath = `../assets/gallery/${item.image}`;
     const image = galleryImages[imagePath]?.default;
@@ -127,25 +30,17 @@ const galleryItems = (galleryEntry?.data?.items || [])
   })
   .filter(item => item.image !== undefined);
 
-// Load upcoming for this language
-const allUpcomingEntries = await getCollection("upcoming");
-const upcomingEntry = allUpcomingEntries.find(e => e.id === `upcoming.${lang}.md`);
-
-// Load contact for this language
-const allContactEntries = await getCollection("contact");
-const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
-
 // Build navigation items from content sections
 const navItems = [
-    { href: `#${bioEntry?.data?.sectionId || 'biography'}`, text: bioEntry?.data?.navText || 'Biography' },
-    { href: `#${videoEntry?.data?.sectionId || 'listen'}`, text: videoEntry?.data?.navText || 'Listen' },
-    { href: `#${galleryEntry?.data?.sectionId || 'photo'}`, text: galleryEntry?.data?.navText || 'Photo' },
-    { href: `#${contactEntry?.data?.sectionId || 'contact'}`, text: contactEntry?.data?.navText || 'Contact' },
+    { href: `#${bio.entry?.data?.sectionId}`, text: bio.entry?.data?.navText },
+    { href: `#${video.entry?.data?.sectionId}`, text: video.entry?.data?.navText },
+    { href: `#${gallery?.data?.sectionId}`, text: gallery?.data?.navText },
+    { href: `#${contact?.data?.sectionId}`, text: contact?.data?.navText },
 ]
 
 // Add upcoming as the first item of the navItems array if there are events.
 if (events.length > 0) {
-    navItems.unshift({ href: `#${upcomingEntry?.data?.sectionId || 'upcoming'}`, text: upcomingEntry?.data?.navText || 'Upcoming' });
+    navItems.unshift({ href: `#${upcoming?.data?.sectionId}`, text: upcoming?.data?.navText });
 }
 
 const showBioHeaderImage = events.length > 0;
@@ -153,40 +48,40 @@ const showBioHeaderImage = events.length > 0;
 ---
 
 <Layout
-	title={pageTitle}
+	title={settings.pageTitle}
 	lang='en'
-	metaDescription={metaDescription}
-	posthogId={settingsEntry?.data?.posthogId}
+	metaDescription={settings.metaDescription}
+	posthogId={settings.posthogId}
 >
     <Header
-        mainTitle={mainTitle}
-        subTitle={subTitle}
+        mainTitle={settings.mainTitle}
+        subTitle={settings.subTitle}
         navItems={navItems}
     />
 	<main>
         <Upcoming
-            title={upcomingEntry?.data?.title || ''}
-            sectionId={upcomingEntry?.data?.sectionId || 'upcoming'}
+            title={upcoming?.data?.title}
+            sectionId={upcoming?.data?.sectionId}
             events={events}
         />
 
-    <Biography title={bioEntry?.data?.title || '' } sectionId={bioEntry?.data?.sectionId || 'biography'} showHeaderImage={showBioHeaderImage} quotes={bioEntry?.data?.quotes || []}>
-      {BioContent && <BioContent />}
+    <Biography title={bio.entry?.data?.title} sectionId={bio.entry?.data?.sectionId} showHeaderImage={showBioHeaderImage} quotes={bio.entry?.data?.quotes || []}>
+      {bio.content && <bio.content />}
     </Biography>
 
-		<Listen title={videoEntry?.data?.title || ''} sectionId={videoEntry?.data?.sectionId || 'listen'} skipLinkText='Skip videos' playVideoLabel='Play video' videos={videoItems} />
+		<Listen title={video.entry?.data?.title} sectionId={video.entry?.data?.sectionId} skipLinkText='Skip videos' playVideoLabel='Play video' videos={video.items} />
 
-        <Photo title={galleryEntry?.data?.title || ''} sectionId={galleryEntry?.data?.sectionId || 'photo'} galleryTitle={galleryEntry?.data?.galleryTitle || ''} skipLinkText='Skip gallery' galleryItems={galleryItems} />
+        <Photo title={gallery?.data?.title} sectionId={gallery?.data?.sectionId} galleryTitle={gallery?.data?.galleryTitle} skipLinkText='Skip gallery' galleryItems={galleryItems} />
 
         <Contact 
-            title={contactEntry?.data?.title || ''}
-            sectionId={contactEntry?.data?.sectionId || 'contact'}
-            emailTitle={contactEntry?.data?.emailTitle || ''}
-            emailHref={contactEntry?.data?.emailHref || ''}
-            emailText={contactEntry?.data?.emailText || ''}
-            phoneTitle={contactEntry?.data?.phoneTitle || ''}
-            phoneHref={contactEntry?.data?.phoneHref || ''}
-            phoneText={contactEntry?.data?.phoneText || ''}
+            title={contact?.data?.title}
+            sectionId={contact?.data?.sectionId}
+            emailTitle={contact?.data?.emailTitle}
+            emailHref={contact?.data?.emailHref}
+            emailText={contact?.data?.emailText}
+            phoneTitle={contact?.data?.phoneTitle}
+            phoneHref={contact?.data?.phoneHref}
+            phoneText={contact?.data?.phoneText}
         />
 	</main>
     <Footer navItems={navItems} />

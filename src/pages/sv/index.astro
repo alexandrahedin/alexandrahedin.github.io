@@ -1,6 +1,4 @@
 ---
-import { getEntry, getCollection } from "astro:content";
-
 import Layout from '../../layouts/Layout.astro';
 import Biography from '../../components/content-sections/Biography.astro';
 import Contact from '../../components/content-sections/Contact.astro';
@@ -9,101 +7,15 @@ import Photo from '../../components/content-sections/Photo.astro';
 import Upcoming from '../../components/content-sections/Upcoming.astro';
 import Header from '../../components/parts/Header.astro';
 import Footer from '../../components/parts/Footer.astro';
+import { getPageData } from '../../lib/pageUtils';
 
 const lang = "sv";
-
-// Load settings for this language
-const allSettingsEntries = await getCollection("settings");
-const settingsEntry = allSettingsEntries.find(e => e.id === `settings.${lang}.md`);
-
-const pageTitle = settingsEntry?.data?.pageTitle || '';
-const metaDescription = settingsEntry?.data?.metaDescription || '';
-const mainTitle = settingsEntry?.data?.headerMainTitle || '';
-const subTitle = settingsEntry?.data?.headerSubtitle || '';
-
-// Load all events for this language
-const allEvents = await getCollection("events", ({ id }) => {
-  return id.endsWith(`.${lang}.md`);
-});
-
-const rawEvents = allEvents.map((event) => event.data);
-
-const now = new Date();
-
-const cmsEvents = rawEvents
-  .filter((event) => {
-    // Show if alwaysShow is true, or if the event is in the future
-    if (event.alwaysShow) return true;
-    
-    // Combine date and time to create a full datetime
-    const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
-    return new Date(dateTimeString) >= now;
-  })
-  .sort(
-    (a, b) => {
-      const aDateTime = a.time ? `${a.date}T${a.time}` : a.date;
-      const bDateTime = b.time ? `${b.date}T${b.time}` : b.date;
-      return new Date(aDateTime).getTime() - new Date(bDateTime).getTime();
-    }
-  );
-
-const events = cmsEvents.map((event) => {
-  const dateTimeString = event.time ? `${event.date}T${event.time}` : event.date;
-  const date = new Date(dateTimeString);
-
-  const weekday = date.toLocaleDateString("sv-SE", {
-    weekday: "long",
-  });
-
-  const day = date.getDate();
-
-  const month = date.toLocaleDateString("sv-SE", {
-    month: "long",
-  });
-
-  const time = event.time || date
-    .toLocaleTimeString("sv-SE", {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
-    })
-    .replace(":", ".");
-
-  return {
-    ...event,
-    date: `${capitalize(weekday)} ${day} ${month} kl ${time}`,
-  };
-});
-
-function capitalize(value: string) {
-  return value.charAt(0).toUpperCase() + value.slice(1);
-}
-
-const allBioEntries = await getCollection("biography");
-const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
-
-const { Content: BioContent } = bioEntry ? await bioEntry.render() : { Content: null };
-
-// Load videos for this language
-const allVideoEntries = await getCollection("videos");
-const videoEntry = allVideoEntries.find(e => e.id === `videos.${lang}.md`);
-
-const videoItems = videoEntry?.data?.items
-  ?.filter(item => !item.hidden)
-  .map(item => ({
-    title: item.title,
-    vimeoId: item.vimeoId.toString(),
-    customContainerStyle: item.customContainerStyle || '',
-  })) || [];
-
-// Load gallery for this language
-const allGalleryEntries = await getCollection("gallery");
-const galleryEntry = allGalleryEntries.find(e => e.id === `gallery.${lang}.md`);
+const { settings, events, bio, video, gallery, upcoming, contact } = await getPageData(lang);
 
 // Import all gallery images
 const galleryImages = import.meta.glob<{ default: ImageMetadata }>('../../assets/gallery/*.jpg', { eager: true });
 
-const galleryItems = (galleryEntry?.data?.items || [])
+const galleryItems = (gallery?.data?.items || [])
   .map(item => {
     const imagePath = `../../assets/gallery/${item.image}`;
     const image = galleryImages[imagePath]?.default;
@@ -118,25 +30,17 @@ const galleryItems = (galleryEntry?.data?.items || [])
   })
   .filter(item => item.image !== undefined);
 
-// Load upcoming for this language
-const allUpcomingEntries = await getCollection("upcoming");
-const upcomingEntry = allUpcomingEntries.find(e => e.id === `upcoming.${lang}.md`);
-
-// Load contact for this language
-const allContactEntries = await getCollection("contact");
-const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
-
 // Build navigation items from content sections
 const navItems = [
-    { href: `#${bioEntry?.data?.sectionId || 'biografi'}`, text: bioEntry?.data?.navText || 'Biografi' },
-    { href: `#${videoEntry?.data?.sectionId || 'lyssna'}`, text: videoEntry?.data?.navText || 'Lyssna' },
-    { href: `#${galleryEntry?.data?.sectionId || 'foto'}`, text: galleryEntry?.data?.navText || 'Foto' },
-    { href: `#${contactEntry?.data?.sectionId || 'kontakt'}`, text: contactEntry?.data?.navText || 'Kontakt' },
+    { href: `#${bio.entry?.data?.sectionId}`, text: bio.entry?.data?.navText },
+    { href: `#${video.entry?.data?.sectionId}`, text: video.entry?.data?.navText },
+    { href: `#${gallery?.data?.sectionId}`, text: gallery?.data?.navText },
+    { href: `#${contact?.data?.sectionId}`, text: contact?.data?.navText },
 ];
 
 // Add upcoming as the first item of the navItems array if there are events.
 if (events.length > 0) {
-    navItems.unshift({ href: `#${upcomingEntry?.data?.sectionId || 'aktuellt'}`, text: upcomingEntry?.data?.navText || 'Aktuellt' });
+    navItems.unshift({ href: `#${upcoming?.data?.sectionId}`, text: upcoming?.data?.navText });
 }
 
 const showBioHeaderImage = events.length > 0;
@@ -144,41 +48,41 @@ const showBioHeaderImage = events.length > 0;
 ---
 
 <Layout
-	title={pageTitle}
+	title={settings.pageTitle}
 	lang='sv'
-	metaDescription={metaDescription}
-	posthogId={settingsEntry?.data?.posthogId}
+	metaDescription={settings.metaDescription}
+	posthogId={settings.posthogId}
 >
     <Header
-        mainTitle={mainTitle}
-        subTitle={subTitle}
+        mainTitle={settings.mainTitle}
+        subTitle={settings.subTitle}
         navItems={navItems}
     />
 	<main>
         <Upcoming
-            title={upcomingEntry?.data?.title || 'Aktuellt'}
-            sectionId={upcomingEntry?.data?.sectionId || 'aktuellt'}
+            title={upcoming?.data?.title}
+            sectionId={upcoming?.data?.sectionId}
             events={events}
         />
 
 
-        <Biography title={bioEntry?.data?.title || 'Biografi' } sectionId={bioEntry?.data?.sectionId || 'biografi'} showHeaderImage={showBioHeaderImage} quotes={bioEntry?.data?.quotes || []}>
-          {BioContent && <BioContent />}
+        <Biography title={bio.entry?.data?.title} sectionId={bio.entry?.data?.sectionId} showHeaderImage={showBioHeaderImage} quotes={bio.entry?.data?.quotes || []}>
+          {bio.content && <bio.content />}
         </Biography>
 
-		<Listen title={videoEntry?.data?.title || 'Lyssna'} sectionId={videoEntry?.data?.sectionId || 'lyssna'} skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />
+		<Listen title={video.entry?.data?.title} sectionId={video.entry?.data?.sectionId} skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={video.items} />
 
-        <Photo title={galleryEntry?.data?.title || 'Foto'} sectionId={galleryEntry?.data?.sectionId || 'foto'} galleryTitle={galleryEntry?.data?.galleryTitle || 'Bildgalleri'} skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
+        <Photo title={gallery?.data?.title} sectionId={gallery?.data?.sectionId} galleryTitle={gallery?.data?.galleryTitle} skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
 
         <Contact 
-            title={contactEntry?.data?.title || 'Kontakt'}
-            sectionId={contactEntry?.data?.sectionId || 'kontakt'}
-            emailTitle={contactEntry?.data?.emailTitle || 'E-post'}
-            emailHref={contactEntry?.data?.emailHref || 'info@alexandrahedin.se'}
-            emailText={contactEntry?.data?.emailText || 'info@alexandrahedin.se'}
-            phoneTitle={contactEntry?.data?.phoneTitle || 'Telefon'}
-            phoneHref={contactEntry?.data?.phoneHref || '+46706571441'}
-            phoneText={contactEntry?.data?.phoneText || '+46 70 657 14 41'}
+            title={contact?.data?.title}
+            sectionId={contact?.data?.sectionId}
+            emailTitle={contact?.data?.emailTitle}
+            emailHref={contact?.data?.emailHref}
+            emailText={contact?.data?.emailText}
+            phoneTitle={contact?.data?.phoneTitle}
+            phoneHref={contact?.data?.phoneHref}
+            phoneText={contact?.data?.phoneText}
         />
 	</main>
     <Footer navItems={navItems} />
