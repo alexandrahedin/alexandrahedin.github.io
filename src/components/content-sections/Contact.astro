@@ -6,10 +6,14 @@ import ContactItem from '../ContactItem.astro';
 export interface Props {
     title: string;
     emailTitle: string;
+    emailHref: string;
+    emailText: string;
     phoneTitle: string;
+    phoneHref: string;
+    phoneText: string;
 }
 
-const { title, emailTitle, phoneTitle } = Astro.props;
+const { title, emailTitle, emailHref, emailText, phoneTitle, phoneHref, phoneText } = Astro.props;
 ---
 
 <ContentSection
@@ -21,14 +25,14 @@ const { title, emailTitle, phoneTitle } = Astro.props;
     <dl class="grid gap-12 md:grid-cols-2 min-h-[50vh]">
         <ContactItem
             title={emailTitle}
-            href='mailto:info@alexandrahedin.se'
-            content='info@alexandrahedin.se'
+            href={`mailto:${emailHref}`}
+            content={emailText}
         />
 
         <ContactItem
             title={phoneTitle}
-            href='tel:+46706571441'
-            content='+46 70 657 14 41'
+            href={`tel:${phoneHref}`}
+            content={phoneText}
         />
     </dl>
 </ContentSection>

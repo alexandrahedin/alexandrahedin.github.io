@@ -147,3 +147,23 @@ collections:
           - { label: "Header Main Title", name: "headerMainTitle", widget: "string", hint: "Main title in page header", i18n: true }
           - { label: "Header Subtitle", name: "headerSubtitle", widget: "string", hint: "Subtitle in page header", i18n: true }
           - { label: "PostHog ID", name: "posthogId", widget: "string", required: false, hint: "PostHog analytics project ID (starts with phc_)", i18n: duplicate }
+
+  - name: "contact"
+    label: "Contact"
+    icon: "email"
+    i18n:
+      structure: multiple_files
+      locales: [en, sv]
+    files:
+      - label: "Contact"
+        name: "contact"
+        file: "src/content/contact/contact.{{locale}}.md"
+        i18n: true
+        fields:
+          - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Contact)", i18n: true }
+          - { label: "Email Title", name: "emailTitle", widget: "string", hint: "Label for email contact (e.g., Email)", i18n: true }
+          - { label: "Email Address", name: "emailHref", widget: "string", hint: "Email address (e.g., info@alexandrahedin.se)", i18n: duplicate }
+          - { label: "Email Display Text", name: "emailText", widget: "string", hint: "Email text shown to users (e.g., info@alexandrahedin.se)", i18n: duplicate }
+          - { label: "Phone Title", name: "phoneTitle", widget: "string", hint: "Label for phone contact (e.g., Telephone)", i18n: true }
+          - { label: "Phone Number", name: "phoneHref", widget: "string", hint: "Phone number with country code (e.g., +46706571441)", i18n: duplicate }
+          - { label: "Phone Display Text", name: "phoneText", widget: "string", hint: "Phone text shown to users (e.g., +46 70 657 14 41)", i18n: duplicate }

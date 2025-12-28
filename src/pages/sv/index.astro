@@ -132,6 +132,9 @@ const galleryItems = (galleryEntry?.data?.items || [])
 
 const showBioHeaderImage = events.length > 0;
 
+// Load contact for this language
+const allContactEntries = await getCollection("contact");
+const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
 
 ---
 
@@ -161,7 +164,15 @@ const showBioHeaderImage = events.length > 0;
 
         <Photo title='Foto' galleryTitle='Bildgalleri' skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
 
-        <Contact title='Kontakt' emailTitle='E-mail' phoneTitle='Telefon' />
+        <Contact 
+            title={contactEntry?.data?.title || 'Kontakt'}
+            emailTitle={contactEntry?.data?.emailTitle || 'E-post'}
+            emailHref={contactEntry?.data?.emailHref || 'info@alexandrahedin.se'}
+            emailText={contactEntry?.data?.emailText || 'info@alexandrahedin.se'}
+            phoneTitle={contactEntry?.data?.phoneTitle || 'Telefon'}
+            phoneHref={contactEntry?.data?.phoneHref || '+46706571441'}
+            phoneText={contactEntry?.data?.phoneText || '+46 70 657 14 41'}
+        />
 	</main>
     <Footer navItems={navItems} />
 </Layout>

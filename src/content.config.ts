@@ -97,10 +97,24 @@ const settings = defineCollection({
   }),
 });
 
+const contact = defineCollection({
+  type: "content",
+  schema: z.object({
+    title: z.string().min(1),
+    emailTitle: z.string().min(1),
+    emailHref: z.string().email(),
+    emailText: z.string().min(1),
+    phoneTitle: z.string().min(1),
+    phoneHref: z.string().min(1),
+    phoneText: z.string().min(1),
+  }),
+});
+
 export const collections = {
   biography,
   events,
   gallery,
   videos,
   settings,
+  contact,
 };

@@ -141,6 +141,10 @@ if (events.length > 0) {
 
 const showBioHeaderImage = events.length > 0;
 
+// Load contact for this language
+const allContactEntries = await getCollection("contact");
+const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
+
 ---
 
 <Layout
@@ -168,7 +172,15 @@ const showBioHeaderImage = events.length > 0;
 
         <Photo title='Photo' galleryTitle='Gallery' skipLinkText='Skip gallery' galleryItems={galleryItems} />
 
-        <Contact title='Contact' emailTitle='Email' phoneTitle='Telephone' />
+        <Contact 
+            title={contactEntry?.data?.title || 'Contact'}
+            emailTitle={contactEntry?.data?.emailTitle || 'Email'}
+            emailHref={contactEntry?.data?.emailHref || 'info@alexandrahedin.se'}
+            emailText={contactEntry?.data?.emailText || 'info@alexandrahedin.se'}
+            phoneTitle={contactEntry?.data?.phoneTitle || 'Telephone'}
+            phoneHref={contactEntry?.data?.phoneHref || '+46706571441'}
+            phoneText={contactEntry?.data?.phoneText || '+46 70 657 14 41'}
+        />
 	</main>
     <Footer navItems={navItems} />
 </Layout>
