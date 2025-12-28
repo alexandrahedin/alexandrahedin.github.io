@@ -14,7 +14,7 @@ const { image, alt = '', caption } = Astro.props;
         data-pswp-width={image.width}
         data-pswp-height={image.height}
         target="_blank">
-        <Image src={image} alt={alt} width={292} />
+        <Image src={image} alt={alt} width={292} loading="lazy" fetchpriority="low" />
     </a>
     {caption && <div class="hidden-caption-content hidden" set:html={caption} />}
 </li>

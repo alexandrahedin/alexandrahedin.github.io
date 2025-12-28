@@ -25,7 +25,12 @@ const { title, galleryItems } = Astro.props;
 
     <script>
         import PhotoSwipeLightbox from 'photoswipe/lightbox';
-        import 'photoswipe/style.css';
+
+        // Lazy load PhotoSwipe CSS
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = 'https://cdn.jsdelivr.net/npm/photoswipe@5/dist/photoswipe.css';
+        document.head.appendChild(link);
 
         const options = {
             gallery: '#gallery-ah',
