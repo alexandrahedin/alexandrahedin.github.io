@@ -130,3 +130,20 @@ collections:
               - { label: "Hidden", name: "hidden", widget: "boolean", required: false, hint: "Check to hide this video from the website", i18n: duplicate }
               - { label: "Custom Container Style", name: "customContainerStyle", widget: "string", required: false, hint: "Optional Tailwind CSS for non-standard aspect ratios (e.g., 'aspect-ratio: 343/248;'). Leave empty for standard 16:9 videos.", i18n: duplicate }
 
+  - name: "settings"
+    label: "Settings"
+    icon: "settings"
+    i18n:
+      structure: multiple_files
+      locales: [en, sv]
+    files:
+      - label: "Site Settings"
+        name: "settings"
+        file: "src/content/settings/settings.{{locale}}.md"
+        i18n: true
+        fields:
+          - { label: "Page Title", name: "pageTitle", widget: "string", hint: "Main page title shown in browser tab", i18n: true }
+          - { label: "Meta Description", name: "metaDescription", widget: "string", hint: "SEO description for search engines", i18n: true }
+          - { label: "Header Main Title", name: "headerMainTitle", widget: "string", hint: "Main title in page header", i18n: true }
+          - { label: "Header Subtitle", name: "headerSubtitle", widget: "string", hint: "Subtitle in page header", i18n: true }
+          - { label: "PostHog ID", name: "posthogId", widget: "string", required: false, hint: "PostHog analytics project ID (starts with phc_)", i18n: duplicate }

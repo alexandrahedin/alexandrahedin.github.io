@@ -12,8 +12,14 @@ import Footer from '../../components/parts/Footer.astro';
 
 const lang = "sv";
 
-const mainTitle = 'Alexandra Hedin';
-const subTitle = 'Sopran';
+// Load settings for this language
+const allSettingsEntries = await getCollection("settings");
+const settingsEntry = allSettingsEntries.find(e => e.id === `settings.${lang}.md`);
+
+const pageTitle = settingsEntry?.data?.pageTitle || '';
+const metaDescription = settingsEntry?.data?.metaDescription || '';
+const mainTitle = settingsEntry?.data?.headerMainTitle || '';
+const subTitle = settingsEntry?.data?.headerSubtitle || '';
 
 // Load all events for this language
 const allEvents = await getCollection("events", ({ id }) => {
@@ -130,9 +136,10 @@ const showBioHeaderImage = events.length > 0;
 ---
 
 <Layout
-	title='Alexandra Hedin'
+	title={pageTitle}
 	lang='sv'
-	metaDescription='Sopran Alexandra Hedin'
+	metaDescription={metaDescription}
+	posthogId={settingsEntry?.data?.posthogId}
 >
     <Header
         mainTitle={mainTitle}

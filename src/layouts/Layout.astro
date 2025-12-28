@@ -6,9 +6,10 @@ export interface Props {
 	title: string;
 	lang: 'en' | 'sv';
 	metaDescription: string;
+	posthogId?: string;
 }
 
-const { title, lang, metaDescription } = Astro.props;
+const { title, lang, metaDescription, posthogId } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -20,7 +21,7 @@ const { title, lang, metaDescription } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
-		<PostHog />
+		<PostHog posthogId={posthogId} />
 	</head>
 	<body>
 		<slot />

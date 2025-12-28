@@ -86,9 +86,21 @@ const videos = defineCollection({
   }),
 });
 
+const settings = defineCollection({
+  type: "content",
+  schema: z.object({
+    pageTitle: z.string().min(1),
+    metaDescription: z.string().min(1),
+    headerMainTitle: z.string().min(1),
+    headerSubtitle: z.string().min(1),
+    posthogId: z.string().optional(),
+  }),
+});
+
 export const collections = {
   biography,
   events,
   gallery,
   videos,
+  settings,
 };
