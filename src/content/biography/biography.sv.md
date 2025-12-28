@@ -1,5 +1,7 @@
 ---
 title: Biografi
+sectionId: biografi
+navText: Biografi
 quotes:
   - text: >-
       …med en röstkvalitet som är sensationellt bra. Alldeles raffinerad var

@@ -79,18 +79,6 @@ function capitalize(value: string) {
   return value.charAt(0).toUpperCase() + value.slice(1);
 }
 
-const navItems = [
-    { href: '#biografi', text: 'Biografi' },
-    { href: '#lyssna', text: 'Lyssna' },
-    { href: '#foto', text: 'Foto' },
-    { href: '#kontakt', text: 'Kontakt' },
-]
-
-// Add upcoming as the first item of the navItems array if there are events.
-if (events.length > 0) {
-    navItems.unshift({ href: '#aktuellt', text: 'Aktuellt' });
-}
-
 const allBioEntries = await getCollection("biography");
 const bioEntry = allBioEntries.find(e => e.id === `biography.${lang}.md`);
 
@@ -130,8 +118,6 @@ const galleryItems = (galleryEntry?.data?.items || [])
   })
   .filter(item => item.image !== undefined);
 
-const showBioHeaderImage = events.length > 0;
-
 // Load upcoming for this language
 const allUpcomingEntries = await getCollection("upcoming");
 const upcomingEntry = allUpcomingEntries.find(e => e.id === `upcoming.${lang}.md`);
@@ -139,6 +125,21 @@ const upcomingEntry = allUpcomingEntries.find(e => e.id === `upcoming.${lang}.md
 // Load contact for this language
 const allContactEntries = await getCollection("contact");
 const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
+
+// Build navigation items from content sections
+const navItems = [
+    { href: `#${bioEntry?.data?.sectionId || 'biografi'}`, text: bioEntry?.data?.navText || 'Biografi' },
+    { href: `#${videoEntry?.data?.sectionId || 'lyssna'}`, text: videoEntry?.data?.navText || 'Lyssna' },
+    { href: `#${galleryEntry?.data?.sectionId || 'foto'}`, text: galleryEntry?.data?.navText || 'Foto' },
+    { href: `#${contactEntry?.data?.sectionId || 'kontakt'}`, text: contactEntry?.data?.navText || 'Kontakt' },
+];
+
+// Add upcoming as the first item of the navItems array if there are events.
+if (events.length > 0) {
+    navItems.unshift({ href: `#${upcomingEntry?.data?.sectionId || 'aktuellt'}`, text: upcomingEntry?.data?.navText || 'Aktuellt' });
+}
+
+const showBioHeaderImage = events.length > 0;
 
 ---
 
@@ -156,20 +157,22 @@ const contactEntry = allContactEntries.find(e => e.id === `contact.${lang}.md`);
 	<main>
         <Upcoming
             title={upcomingEntry?.data?.title || 'Aktuellt'}
+            sectionId={upcomingEntry?.data?.sectionId || 'aktuellt'}
             events={events}
         />
 
 
-        <Biography title={bioEntry?.data?.title || 'Biografi' } showHeaderImage={showBioHeaderImage} quotes={bioEntry?.data?.quotes || []}>
+        <Biography title={bioEntry?.data?.title || 'Biografi' } sectionId={bioEntry?.data?.sectionId || 'biografi'} showHeaderImage={showBioHeaderImage} quotes={bioEntry?.data?.quotes || []}>
           {BioContent && <BioContent />}
         </Biography>
 
-		<Listen title={videoEntry?.data?.title || 'Lyssna'} skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />
+		<Listen title={videoEntry?.data?.title || 'Lyssna'} sectionId={videoEntry?.data?.sectionId || 'lyssna'} skipLinkText='Hoppa över videor' playVideoLabel='Spela video' videos={videoItems} />
 
-        <Photo title={galleryEntry?.data?.title || 'Foto'} galleryTitle={galleryEntry?.data?.galleryTitle || 'Bildgalleri'} skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
+        <Photo title={galleryEntry?.data?.title || 'Foto'} sectionId={galleryEntry?.data?.sectionId || 'foto'} galleryTitle={galleryEntry?.data?.galleryTitle || 'Bildgalleri'} skipLinkText='Hoppa över galleri' galleryItems={galleryItems} />
 
         <Contact 
             title={contactEntry?.data?.title || 'Kontakt'}
+            sectionId={contactEntry?.data?.sectionId || 'kontakt'}
             emailTitle={contactEntry?.data?.emailTitle || 'E-post'}
             emailHref={contactEntry?.data?.emailHref || 'info@alexandrahedin.se'}
             emailText={contactEntry?.data?.emailText || 'info@alexandrahedin.se'}

@@ -30,6 +30,8 @@ collections:
         i18n: true
         fields:
           - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Upcoming). Note: This section automatically displays future events from the Events collection.", i18n: true }
+          - { label: "Section ID", name: "sectionId", widget: "string", hint: "HTML id for the section (e.g., upcoming)", i18n: duplicate }
+          - { label: "Nav Link Text", name: "navText", widget: "string", hint: "Navigation menu text", i18n: true }
 
       - label: "Biography"
         name: "biography"
@@ -37,6 +39,8 @@ collections:
         i18n: true
         fields:
           - { label: "Title", name: "title", widget: "string", i18n: true }
+          - { label: "Section ID", name: "sectionId", widget: "string", hint: "HTML id for the section (e.g., biography)", i18n: duplicate }
+          - { label: "Nav Link Text", name: "navText", widget: "string", hint: "Navigation menu text", i18n: true }
           - { label: "Content", name: "body", widget: "markdown", i18n: true }
           - label: "Quotes"
             name: "quotes"
@@ -57,6 +61,8 @@ collections:
         fields:
           - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Photo)", i18n: true }
           - { label: "Gallery Title", name: "galleryTitle", widget: "string", hint: "Gallery subtitle (e.g., Gallery)", i18n: true }
+          - { label: "Section ID", name: "sectionId", widget: "string", hint: "HTML id for the section (e.g., photo)", i18n: true }
+          - { label: "Nav Link Text", name: "navText", widget: "string", hint: "Navigation menu text", i18n: true }
           - label: "Gallery Items"
             name: "items"
             widget: "list"
@@ -75,6 +81,8 @@ collections:
         i18n: true
         fields:
           - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Listen)", i18n: true }
+          - { label: "Section ID", name: "sectionId", widget: "string", hint: "HTML id for the section (e.g., listen)", i18n: true }
+          - { label: "Nav Link Text", name: "navText", widget: "string", hint: "Navigation menu text", i18n: true }
           - label: "Items"
             name: "items"
             widget: "list"
@@ -94,6 +102,8 @@ collections:
         i18n: true
         fields:
           - { label: "Section Title", name: "title", widget: "string", hint: "Main section title (e.g., Contact)", i18n: true }
+          - { label: "Section ID", name: "sectionId", widget: "string", hint: "HTML id for the section (e.g., contact)", i18n: true }
+          - { label: "Nav Link Text", name: "navText", widget: "string", hint: "Navigation menu text", i18n: true }
           - { label: "Email Title", name: "emailTitle", widget: "string", hint: "Label for email contact (e.g., Email)", i18n: true }
           - { label: "Email Address", name: "emailHref", widget: "string", hint: "Email address (e.g., info@alexandrahedin.se)", i18n: duplicate }
           - { label: "Email Display Text", name: "emailText", widget: "string", hint: "Email text shown to users (e.g., info@alexandrahedin.se)", i18n: duplicate }
@@ -140,13 +150,13 @@ collections:
           - { label: "Link text", name: "text", widget: "string", required: true, i18n: true }
   
   - name: "settings"
-    label: "Settings"
+    label: "Site Settings"
     icon: "settings"
     i18n:
       structure: multiple_files
       locales: [en, sv]
     files:
-      - label: "Site Settings"
+      - label: "General"
         name: "settings"
         file: "src/content/settings/settings.{{locale}}.md"
         i18n: true

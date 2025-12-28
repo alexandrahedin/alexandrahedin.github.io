@@ -10,11 +10,12 @@ type Quote = {
 
 export interface Props {
     title: string;
+    sectionId: string;
     showHeaderImage: boolean;
     quotes?: Quote[];
 }
 
-const { title, showHeaderImage, quotes = [] } = Astro.props;
+const { title, sectionId, showHeaderImage, quotes = [] } = Astro.props;
 
 const biographyImage = showHeaderImage ? bioImage : undefined;
 ---
@@ -22,6 +23,7 @@ const biographyImage = showHeaderImage ? bioImage : undefined;
 <ContentSection
     headerImage={biographyImage}
     {title}
+    {sectionId}
     withHeaderTag={false}
     sectionType='biography'
 >

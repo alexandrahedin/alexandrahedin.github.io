@@ -4,6 +4,7 @@ import ContentSection from '../ContentSection.astro';
 
 export interface Props {
     title: string;
+    sectionId: string;
     skipLinkText?: string;
     playVideoLabel?: string;
     videos: Array<{
@@ -13,12 +14,13 @@ export interface Props {
     }>;
 }
 
-const { title, skipLinkText, playVideoLabel = 'Play video', videos } = Astro.props;
+const { title, sectionId, skipLinkText, playVideoLabel = 'Play video', videos } = Astro.props;
 ---
 
 <ContentSection
     headerImage={listenImage}
     {title}
+    {sectionId}
     maxWidth='max-w-4xl'
     sectionType='listen'
     skipToSection='photo'

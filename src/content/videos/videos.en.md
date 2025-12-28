@@ -1,5 +1,7 @@
 ---
 title: Listen
+sectionId: listen
+navText: Listen
 items:
   - title: Deh se piacer (Vitellia) La clemenza di Tito - W A Mozart
     vimeoId: 1127992277
@@ -22,3 +24,4 @@ items:
     vimeoId: 240281788
     customContainerStyle: ''
 ---
+

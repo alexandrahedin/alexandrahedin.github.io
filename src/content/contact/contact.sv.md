@@ -1,5 +1,7 @@
 ---
 title: Kontakt
+sectionId: kontakt
+navText: Kontakt
 emailTitle: E-post
 emailHref: info@alexandrahedin.se
 emailText: info@alexandrahedin.se

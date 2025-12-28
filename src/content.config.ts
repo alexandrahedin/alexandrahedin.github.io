@@ -63,6 +63,8 @@ const biography = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string().min(1),
+    sectionId: z.string().min(1),
+    navText: z.string().min(1),
     quotes: z.array(quoteSchema).optional(),
   }),
 });
@@ -76,6 +78,8 @@ const upcoming = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string().min(1),
+    sectionId: z.string().min(1),
+    navText: z.string().min(1),
   }),
 });
 
@@ -84,6 +88,8 @@ const gallery = defineCollection({
   schema: z.object({
     title: z.string().min(1),
     galleryTitle: z.string().min(1),
+    sectionId: z.string().min(1),
+    navText: z.string().min(1),
     items: z.array(galleryItemSchema),
   }),
 });
@@ -92,6 +98,8 @@ const videos = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string().min(1),
+    sectionId: z.string().min(1),
+    navText: z.string().min(1),
     items: z.array(videoItemSchema),
   }),
 });
@@ -111,6 +119,8 @@ const contact = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string().min(1),
+    sectionId: z.string().min(1),
+    navText: z.string().min(1),
     emailTitle: z.string().min(1),
     emailHref: z.string().email(),
     emailText: z.string().min(1),

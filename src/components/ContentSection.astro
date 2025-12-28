@@ -3,6 +3,7 @@ import ContentSectionBand from './ContentSectionBand.astro';
 
 export interface Props {
     title: string;
+    sectionId: string;
 	headerImage?: ImageMetadata;
     withHeaderTag?: boolean;
     maxWidth?: string;
@@ -11,9 +12,9 @@ export interface Props {
     skipLinkText?: string;
 }
 
-const { headerImage, title, withHeaderTag = true, maxWidth = 'max-w-prose', sectionType, skipToSection, skipLinkText } = Astro.props;
+const { headerImage, title, sectionId, withHeaderTag = true, maxWidth = 'max-w-prose', sectionType, skipToSection, skipLinkText } = Astro.props;
 ---
-<section id={title.toLocaleLowerCase()}>
+<section id={sectionId}>
     {headerImage && <ContentSectionBand {headerImage} {title} asHeaderTag={withHeaderTag} {sectionType} />}
     <div class={`py-12 px-4 [&_>_p]:mb-6 ${maxWidth} mx-auto`}>
         {(!withHeaderTag || !headerImage) && <h2 class="font-sans text-center text-3xl mb-12">{title}</h2>}

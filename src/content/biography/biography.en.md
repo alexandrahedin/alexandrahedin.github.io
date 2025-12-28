@@ -1,5 +1,7 @@
 ---
 title: Biography
+sectionId: biography
+navText: Biography
 quotes: []
 ---
 

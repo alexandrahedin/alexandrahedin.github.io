@@ -5,6 +5,7 @@ import ImageGallery from '../ImageGallery.astro';
 
 export interface Props {
     title: string;
+    sectionId: string;
     galleryTitle: string;
     skipLinkText?: string;
     galleryItems: Array<{
@@ -14,12 +15,13 @@ export interface Props {
     }>;
 }
 
-const { title, galleryTitle, skipLinkText, galleryItems } = Astro.props;
+const { title, sectionId, galleryTitle, skipLinkText, galleryItems } = Astro.props;
 ---
 
 <ContentSection
     headerImage={photoImage}
     {title}
+    {sectionId}
     sectionType='photo'
     skipToSection='contact'
     {skipLinkText}

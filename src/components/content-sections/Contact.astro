@@ -5,6 +5,7 @@ import ContactItem from '../ContactItem.astro';
 
 export interface Props {
     title: string;
+    sectionId: string;
     emailTitle: string;
     emailHref: string;
     emailText: string;
@@ -13,12 +14,13 @@ export interface Props {
     phoneText: string;
 }
 
-const { title, emailTitle, emailHref, emailText, phoneTitle, phoneHref, phoneText } = Astro.props;
+const { title, sectionId, emailTitle, emailHref, emailText, phoneTitle, phoneHref, phoneText } = Astro.props;
 ---
 
 <ContentSection
     headerImage={contactImage}
     {title}
+    {sectionId}
     sectionType='contact'
     maxWidth='max-w-4xl'
 >

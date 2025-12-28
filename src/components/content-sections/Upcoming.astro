@@ -23,15 +23,17 @@ type Event = {
 
 export interface Props {
     title: string;
+    sectionId: string;
     events: Event[];
 }
 
-const { title, events } = Astro.props;
+const { title, sectionId, events } = Astro.props;
 ---
 
 {events.length > 0 && (
     <ContentSection
         {title}
+        {sectionId}
         withHeaderTag={false}
     >
         <ul class="[&_>_li+li]:pt-12 max-w-sm mx-auto mb-48">
