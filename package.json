@@ -13,7 +13,7 @@
     "lighthouse:local:sv": "lighthouse http://localhost:4321/sv --only-categories=performance,accessibility,best-practices,seo --output=html --output-path=./lighthouse-reports/local-sv.html --chrome-flags=\"--headless\" --quiet",
     "lighthouse:prod": "npm run lighthouse:prod:en && npm run lighthouse:prod:sv",
     "lighthouse:prod:en": "lighthouse https://alexandrahedin.se --only-categories=performance,accessibility,best-practices,seo --output=html --output-path=./lighthouse-reports/prod-en.html --chrome-flags=\"--headless\" --quiet",
-    "lighthouse:prod:sv": "lighthouse https://alexandrahedin.se/sv --only-categories=performance,accessibility,best-practices,seo --output=html --output-path=./lighthouse-reports/prod-sv.html --chrome-flags=\"--headless\" --quiet",
+    "lighthouse:prod:sv": "lighthouse https://alexandrahedin.se/sv/ --only-categories=performance,accessibility,best-practices,seo --output=html --output-path=./lighthouse-reports/prod-sv.html --chrome-flags=\"--headless\" --quiet",
     "lighthouse": "npm run lighthouse:local"
   },
   "dependencies": {
