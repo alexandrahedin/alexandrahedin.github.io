@@ -92,7 +92,7 @@ const allVideoEntries = await getCollection("videos");
 const videoEntry = allVideoEntries.find(e => e.id === `videos.${lang}.md`);
 
 const videoItems = videoEntry?.data?.items
-  ?.filter(item => item.published)
+  ?.filter(item => !item.hidden)
   .map(item => ({
     title: item.title,
     vimeoId: item.vimeoId.toString(),

@@ -121,12 +121,12 @@ collections:
             name: "items"
             widget: "list"
             label_singular: "Video"
-            summary: "{{title}} {{#published}}✓{{/published}}{{^published}}✗{{/published}}"
+            summary: "{{fields.title}}"
             collapsed: true
             i18n: true
             fields:
               - { label: "Title", name: "title", widget: "string", hint: "Video title (e.g., composer, work, role)", i18n: true }
               - { label: "Vimeo ID", name: "vimeoId", widget: "number", value_type: "int", hint: "The numeric ID from Vimeo video URL (e.g., 1127992277)", i18n: duplicate }
-              - { label: "Published", name: "published", widget: "boolean", default: true, hint: "Uncheck to hide this video from the website", i18n: duplicate }
+              - { label: "Hidden", name: "hidden", widget: "boolean", required: false, hint: "Check to hide this video from the website", i18n: duplicate }
               - { label: "Custom Container Style", name: "customContainerStyle", widget: "string", required: false, hint: "Optional Tailwind CSS for non-standard aspect ratios (e.g., 'aspect-ratio: 343/248;'). Leave empty for standard 16:9 videos.", i18n: duplicate }
 

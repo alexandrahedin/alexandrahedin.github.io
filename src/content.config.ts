@@ -47,7 +47,7 @@ const videoItemSchema = z.object({
   title: z.string().min(1),
   vimeoId: z.number().int().positive(),
   customContainerStyle: z.string().optional().default(''),
-  published: z.boolean().default(true),
+  hidden: z.boolean().optional(),
 });
 
 /* --------------------
