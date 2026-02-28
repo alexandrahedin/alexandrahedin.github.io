@@ -1,6 +1,6 @@
 ---
 title: International Women's Day
-subTitle: Concert with music by female composers
+subTitle: Concert with music by woman composers
 date: 2026-03-08
 time: 17:00
 location: Ekeberga kyrka, Kosta
