@@ -9,6 +9,6 @@ performers:
   - name: Alexandra Hedin
     title: soprano
   - name: Tobias Livheim
-    title: Piano
+    title: piano
 link: null
 ---
