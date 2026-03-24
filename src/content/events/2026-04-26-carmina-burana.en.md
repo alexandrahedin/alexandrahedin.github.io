@@ -14,6 +14,12 @@ performers:
     title: baritone
   - name: Västerås Stadsmusikkår
     title: ''
+  - name: Västerås Kammarkör
+    title: ''
+  - name: Camerata InCantus
+    title: ''
+  - name: Fryxellska skolans musikklasser
+    title: ''
   - name: Leif Karlsson
     title: conductor
 link:
