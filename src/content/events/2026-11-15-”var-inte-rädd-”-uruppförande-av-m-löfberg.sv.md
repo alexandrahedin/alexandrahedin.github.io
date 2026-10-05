@@ -7,11 +7,11 @@ location: Hovmantorps kyrka
 alwaysShow: true
 performers:
   - name: Alexandra Hedin
-    title: Sopran
+    title: sopran
   - name: Linda Andersson
-    title: Sopran
+    title: sopran
   - name: Tove Carlson
-    title: Sopran
+    title: sopran
   - name: Astridkvartetten
     title: ''
 link: null
