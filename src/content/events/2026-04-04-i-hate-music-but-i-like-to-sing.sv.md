@@ -4,7 +4,7 @@ subTitle: Lunchkonsert
 date: 2026-04-01
 time: 11:30
 location: Vårfrukyrkan, Hägersten
-alwaysShow: true
+alwaysShow: false
 performers:
   - name: Alexandra Hedin
     title: sopran
