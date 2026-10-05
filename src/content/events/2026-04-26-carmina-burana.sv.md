@@ -4,7 +4,7 @@ subTitle: Carl Orff
 date: 2026-04-26
 time: 18:00
 location: Västerås konserthus
-alwaysShow: true
+alwaysShow: false
 performers:
   - name: Alexandra Hedin
     title: sopran
