@@ -4,7 +4,7 @@ subTitle: Lunch concert
 date: 2026-04-15
 time: 11:30
 location: Frötuna kyrka, Norrtälje
-alwaysShow: true
+alwaysShow: false
 performers:
   - name: Alexandra Hedin
     title: soprano
