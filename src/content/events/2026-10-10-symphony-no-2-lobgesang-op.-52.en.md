@@ -7,13 +7,13 @@ location: Klosters kyrka , Eskilstuna
 alwaysShow: true
 performers:
   - name: Alexandra Hedin
-    title: Soprano
+    title: soprano
   - name: Linn Henningson Ersson
-    title: Soprano
+    title: soprano
   - name: Robin Norrgård
-    title: Tenor
+    title: tenor
   - name: Mila Thoors
-    title: Conductor
+    title: conductor
   - name: Camerata InCantus
     title: ''
   - name: Eskilstuna oratoriekör
