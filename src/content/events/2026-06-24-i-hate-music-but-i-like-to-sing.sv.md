@@ -4,7 +4,7 @@ subTitle: ''
 date: 2026-06-24
 time: 19:00
 location: Torö kyrka, Nynäshamn
-alwaysShow: true
+alwaysShow: false
 performers:
   - name: Alexandra Hedin
     title: sopran
