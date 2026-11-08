@@ -27,9 +27,10 @@ export interface Props {
     title: string;
     sectionId: string;
     events: Event[];
+    newTabText: string;
 }
 
-const { title, sectionId, events } = Astro.props;
+const { title, sectionId, events, newTabText } = Astro.props;
 ---
 
 {events.length > 0 && (
@@ -49,6 +50,7 @@ const { title, sectionId, events } = Astro.props;
                     location={event.location}
                     performers={event.performers}
                     link={event.link}
+                    {newTabText}
                 />
             ))}
         </ul>

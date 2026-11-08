@@ -18,9 +18,10 @@ export interface Props {
 	location: string;
     performers: Performer[];
     link?: Link | null;
+    newTabText: string;
 }
 
-const { title, subTitle, date, startDate, alwaysShow, location, performers, link } = Astro.props;
+const { title, subTitle, date, startDate, alwaysShow, location, performers, link, newTabText } = Astro.props;
 ---
 <li data-start={alwaysShow ? undefined : startDate}>
     <article>
@@ -40,7 +41,7 @@ const { title, subTitle, date, startDate, alwaysShow, location, performers, link
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    {link.text}<span class="sr-only"> (opens in a new tab)</span>
+                    {link.text}<span class="sr-only"> ({newTabText})</span>
                     <svg
                         aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"

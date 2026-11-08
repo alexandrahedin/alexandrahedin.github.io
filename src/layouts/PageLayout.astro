@@ -16,9 +16,13 @@ export interface Props {
   skipVideosText: string;
   playVideoText: string;
   skipGalleryText: string;
+  newTabText: string;
+  skipToContentText: string;
+  mainNavLabel: string;
+  footerNavLabel: string;
 }
 
-const { lang, skipVideosText, playVideoText, skipGalleryText } = Astro.props;
+const { lang, skipVideosText, playVideoText, skipGalleryText, newTabText, skipToContentText, mainNavLabel, footerNavLabel } = Astro.props;
 
 // Get all page data
 const { settings, events, bio, video, gallery, upcoming, contact } = await getPageData(lang);
@@ -93,16 +97,20 @@ const jsonLd = [
 	ogImage={ogImage.src}
 	jsonLd={jsonLd}
 >
+    <a href="#main" class="skip-link skip-link-top font-sans">{skipToContentText}</a>
     <Header
+        lang={lang}
+        navLabel={mainNavLabel}
         mainTitle={settings.mainTitle}
         subTitle={settings.subTitle}
         navItems={navItems}
     />
-	<main>
+	<main id="main">
         <Upcoming
             title={upcoming?.data?.title || ''}
             sectionId={upcoming?.data?.sectionId || ''}
             events={events}
+            {newTabText}
         />
 
         <Biography title={bio.entry?.data?.title || ''} sectionId={bio.entry?.data?.sectionId || ''} showHeaderImage={showBioHeaderImage} quotes={bio.entry?.data?.quotes || []}>
@@ -124,5 +132,5 @@ const jsonLd = [
             phoneText={contact?.data?.phoneText || ''}
         />
 	</main>
-    <Footer navItems={navItems} />
+    <Footer navItems={navItems} navLabel={footerNavLabel} />
 </Layout>
