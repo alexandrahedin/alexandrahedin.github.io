@@ -17,7 +17,9 @@
     "lighthouse": "npm run lighthouse:local"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
     "astro": "^5.0.5",
+    "lite-vimeo-embed": "^0.3.0",
     "photoswipe": "^5.3.8",
     "sharp": "^0.33.5"
   },

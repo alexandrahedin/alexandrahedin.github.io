@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /admin/
+
+Sitemap: https://alexandrahedin.se/sitemap-index.xml

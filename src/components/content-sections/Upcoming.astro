@@ -16,6 +16,8 @@ type Event = {
     title: string;
     subTitle?: string;
     date: string;
+    startDate: string;
+    alwaysShow?: boolean;
     location: string;
     performers: Performer[];
     link?: Link | null;
@@ -25,9 +27,10 @@ export interface Props {
     title: string;
     sectionId: string;
     events: Event[];
+    newTabText: string;
 }
 
-const { title, sectionId, events } = Astro.props;
+const { title, sectionId, events, newTabText } = Astro.props;
 ---
 
 {events.length > 0 && (
@@ -36,17 +39,38 @@ const { title, sectionId, events } = Astro.props;
         {sectionId}
         withHeaderTag={false}
     >
-        <ul class="[&_>_li+li]:pt-12 max-w-sm mx-auto mb-48">
+        <ul data-upcoming-events class="[&_>_li+li]:pt-12 max-w-sm mx-auto mb-48">
             {events.map((event: Event) => (
                 <Event
                     title={event.title}
                     subTitle={event.subTitle}
                     date={event.date}
+                    startDate={event.startDate}
+                    alwaysShow={event.alwaysShow}
                     location={event.location}
                     performers={event.performers}
                     link={event.link}
+                    {newTabText}
                 />
             ))}
         </ul>
     </ContentSection>
 )}
+
+<script>
+    // The page is built ahead of time, so hide events that have passed since the last build
+    const list = document.querySelector('[data-upcoming-events]');
+    if (list) {
+        const now = Date.now();
+        list.querySelectorAll<HTMLElement>(':scope > li[data-start]').forEach(item => {
+            // Keep an event visible until the end of its day
+            const end = new Date(item.dataset.start!.slice(0, 10) + 'T23:59');
+            if (end.getTime() < now) item.remove();
+        });
+        if (!list.querySelector(':scope > li')) {
+            const section = list.closest('section');
+            document.querySelectorAll(`a[href="#${section?.id}"]`).forEach(a => a.closest('li')?.remove());
+            section?.remove();
+        }
+    }
+</script>

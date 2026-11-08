@@ -6,14 +6,15 @@ type NavItem = {
 
 export interface Props {
     navItems: NavItem[];
+    navLabel: string;
 }
 
-const { navItems } = Astro.props;
+const { navItems, navLabel } = Astro.props;
 ---
 
 {navItems.length > 0 && (
     <footer class="pt-6 pb-4">
-        <nav class="font-sans py-4 px-2">
+        <nav aria-label={navLabel} class="font-sans py-4 px-2">
                 <ul class="flex justify-center [&_a]:inline-block [&_a]:p-1 [&_a]:text-red-600 [&_a:hover]:underline">
                     {navItems.map((item: NavItem) => (
                         <li>
