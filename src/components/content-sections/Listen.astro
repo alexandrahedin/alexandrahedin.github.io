@@ -52,10 +52,7 @@ const { title, sectionId, skipLinkText, playVideoLabel = 'Play video', videos } 
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 // Load the lite-vimeo script
-                const script = document.createElement('script');
-                script.type = 'module';
-                script.src = 'https://cdn.jsdelivr.net/npm/lite-vimeo-embed/+esm';
-                document.head.appendChild(script);
+                import('lite-vimeo-embed');
                 
                 // Stop observing after loading once
                 observer.disconnect();

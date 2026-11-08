@@ -73,7 +73,8 @@ const person = {
 };
 const jsonLd = [
     { '@context': 'https://schema.org', ...person },
-    ...events.map(event => ({
+    // "Always show" can keep past events on the page; don't list those as upcoming for search engines
+    ...events.filter(event => new Date(event.startDate) >= new Date()).map(event => ({
         '@context': 'https://schema.org',
         '@type': 'MusicEvent',
         name: event.title,
