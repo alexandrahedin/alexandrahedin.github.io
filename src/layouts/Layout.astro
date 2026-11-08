@@ -7,9 +7,16 @@ export interface Props {
 	lang: 'en' | 'sv';
 	metaDescription: string;
 	posthogId?: string;
+	ogImage?: string;
+	jsonLd?: object[];
 }
 
-const { title, lang, metaDescription, posthogId } = Astro.props;
+const { title, lang, metaDescription, posthogId, ogImage, jsonLd = [] } = Astro.props;
+const site = Astro.site ?? new URL('https://alexandrahedin.se');
+const enUrl = new URL('/', site).href;
+const svUrl = new URL('/sv/', site).href;
+const canonical = lang === 'sv' ? svUrl : enUrl;
+const ogImageUrl = ogImage ? new URL(ogImage, site).href : undefined;
 ---
 
 <!DOCTYPE html>
@@ -17,12 +24,24 @@ const { title, lang, metaDescription, posthogId } = Astro.props;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="description" content={metaDescription}>
-		<meta name="viewport" content="width=device-width" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="canonical" href={canonical} />
+		<link rel="alternate" hreflang="en" href={enUrl} />
+		<link rel="alternate" hreflang="sv" href={svUrl} />
+		<link rel="alternate" hreflang="x-default" href={enUrl} />
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={metaDescription} />
+		<meta property="og:url" content={canonical} />
+		<meta property="og:locale" content={lang === 'sv' ? 'sv_SE' : 'en_GB'} />
+		<meta property="og:locale:alternate" content={lang === 'sv' ? 'en_GB' : 'sv_SE'} />
+		{ogImageUrl && <meta property="og:image" content={ogImageUrl} />}
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="theme-color" content="#1f2937" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 	<meta name="generator" content={Astro.generator} />
 	<link rel="preload" href="/fonts/EBGaramond.woff2" as="font" type="font/woff2" crossorigin />
 	<link rel="preload" href="/fonts/Montserrat.woff2" as="font" type="font/woff2" crossorigin />
-	<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
 	{posthogId && (
 		<>
 			<link rel="dns-prefetch" href="https://eu.posthog.com" />
@@ -31,6 +50,7 @@ const { title, lang, metaDescription, posthogId } = Astro.props;
 		</>
 	)}
 	<title>{title}</title>
+	{jsonLd.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
 		<PostHog posthogId={posthogId} />
 	</head>
 	<body>

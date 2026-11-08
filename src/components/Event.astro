@@ -13,19 +13,21 @@ export interface Props {
 	title: string;
 	subTitle?: string;
 	date: string;
+	startDate: string;
+	alwaysShow?: boolean;
 	location: string;
     performers: Performer[];
     link?: Link | null;
 }
 
-const { title, subTitle, date, location, performers, link } = Astro.props;
+const { title, subTitle, date, startDate, alwaysShow, location, performers, link } = Astro.props;
 ---
-<li>
+<li data-start={alwaysShow ? undefined : startDate}>
     <article>
         <h3 class="font-sans text-2xl mb-6">{title}
             {subTitle && (<br><span class="text-base">{subTitle}</span>)}
         </h3>
-        <p class="mb-6"><i>{date}</i><br>{location}</p>
+        <p class="mb-6"><time class="italic" datetime={startDate}>{date}</time><br>{location}</p>
         <ul>
             {performers.map((performer: Performer) => <li>{performer.name}{performer.title ? `, ${performer.title}` : ''}</li>)}
         </ul>
@@ -38,8 +40,9 @@ const { title, subTitle, date, location, performers, link } = Astro.props;
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    {link.text}
+                    {link.text}<span class="sr-only"> (opens in a new tab)</span>
                     <svg
+                        aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg"
                         class="inline-block w-4 h-4 ml-1"
                         fill="none"

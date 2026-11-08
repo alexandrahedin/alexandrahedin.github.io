@@ -8,6 +8,8 @@ import Upcoming from '../components/content-sections/Upcoming.astro';
 import Header from '../components/parts/Header.astro';
 import Footer from '../components/parts/Footer.astro';
 import { getPageData } from '../lib/pageUtils';
+import { getImage } from 'astro:assets';
+import headerImage from '../assets/aaIMG_1766.jpg';
 
 export interface Props {
   lang: "en" | "sv";
@@ -53,6 +55,34 @@ if (events.length > 0) {
 }
 
 const showBioHeaderImage = events.length > 0;
+
+const ogImage = await getImage({ src: headerImage, width: 1200, format: 'jpg' });
+const site = Astro.site?.href ?? 'https://alexandrahedin.se/';
+const person = {
+    '@type': 'Person',
+    '@id': `${site}#person`,
+    name: settings.mainTitle,
+    jobTitle: settings.subTitle,
+    url: site,
+    image: new URL(ogImage.src, site).href,
+    sameAs: ['https://vimeo.com/alexandrahedinsoprano'],
+};
+const jsonLd = [
+    { '@context': 'https://schema.org', ...person },
+    ...events.map(event => ({
+        '@context': 'https://schema.org',
+        '@type': 'MusicEvent',
+        name: event.title,
+        startDate: event.startDate,
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        location: { '@type': 'Place', name: event.location, address: event.location },
+        performer: event.performers.map(p => p.name === settings.mainTitle
+            ? { '@id': person['@id'] }
+            : { '@type': p.title ? 'Person' : 'PerformingGroup', name: p.name }),
+        ...(event.link ? { url: event.link.url } : {}),
+    })),
+];
 ---
 
 <Layout
@@ -60,6 +90,8 @@ const showBioHeaderImage = events.length > 0;
 	lang={lang}
 	metaDescription={settings.metaDescription}
 	posthogId={settings.posthogId}
+	ogImage={ogImage.src}
+	jsonLd={jsonLd}
 >
     <Header
         mainTitle={settings.mainTitle}

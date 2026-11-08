@@ -5,6 +5,7 @@ type EventData = CollectionEntry<"events">["data"];
 
 interface ProcessedEvent extends EventData {
   date: string;
+  startDate: string;
 }
 
 export async function getPageData(lang: string) {
@@ -104,6 +105,7 @@ function formatEvents(events: EventData[], lang: string): ProcessedEvent[] {
 
       return {
         ...event,
+        startDate: dateTimeString,
         date: `${capitalize(weekday)} ${day} ${month} kl ${time}`,
       };
     });
@@ -137,6 +139,7 @@ function formatEvents(events: EventData[], lang: string): ProcessedEvent[] {
 
     return {
       ...event,
+      startDate: dateTimeString,
       date: `${weekday}, ${month} ${day}${ordinal} at ${time}`,
     };
   });
