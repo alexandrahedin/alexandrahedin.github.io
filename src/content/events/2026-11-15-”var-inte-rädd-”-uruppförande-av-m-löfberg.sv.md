@@ -4,7 +4,7 @@ subTitle: Konsert
 date: 2026-11-15
 time: 17:00
 location: Hovmantorps kyrka
-alwaysShow: true
+alwaysShow: false
 performers:
   - name: Alexandra Hedin
     title: sopran

@@ -6,9 +6,11 @@ export interface Props {
     sectionType?: string;
     fetchpriority?: 'high' | 'low' | 'auto';
     loading?: 'lazy' | 'eager';
+    /** data URI of a tiny blurred copy, shown until the photo has loaded */
+    placeholder?: string;
 }
 
-const { headerImage, sectionType, fetchpriority = 'low', loading = 'lazy' } = Astro.props;
+const { headerImage, sectionType, fetchpriority = 'low', loading = 'lazy', placeholder } = Astro.props;
 
 let classes = 'absolute top-0 left-0 w-full h-full object-cover header-bg-image';
 
@@ -61,6 +63,14 @@ if (sectionType !== undefined) {
     }
 }
 </style>
+
+{placeholder && (
+    <div
+        class={`${classes} bg-cover bg-center blur-2xl scale-110`}
+        style={`background-image: url(${placeholder})`}
+        aria-hidden="true"
+    ></div>
+)}
 
 <Picture
     src={headerImage}

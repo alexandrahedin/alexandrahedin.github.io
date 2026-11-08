@@ -4,7 +4,7 @@ subTitle: Felix Mendelssohn
 date: 2026-10-10
 time: 18:00
 location: Klosters kyrka, Eskilstuna
-alwaysShow: true
+alwaysShow: false
 performers:
   - name: Alexandra Hedin
     title: sopran

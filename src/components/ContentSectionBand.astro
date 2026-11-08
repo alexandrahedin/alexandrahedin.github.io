@@ -8,9 +8,10 @@ export interface Props {
     sectionType?: string;
     fetchpriority?: 'high' | 'low' | 'auto';
     loading?: 'lazy' | 'eager';
+    placeholder?: string;
 }
 
-const { headerImage, title, asHeaderTag = false, sectionType, fetchpriority, loading } = Astro.props;
+const { headerImage, title, asHeaderTag = false, sectionType, fetchpriority, loading, placeholder } = Astro.props;
 
 const containerClasses = [
     'relative',
@@ -48,13 +49,13 @@ const headingClasses = [
 
 {asHeaderTag ?
 <header class={containerClasses} >
-    <ContentSectionBandPicture {headerImage} {sectionType} {fetchpriority} {loading} />
+    <ContentSectionBandPicture {headerImage} {sectionType} {fetchpriority} {loading} {placeholder} />
     {title && <h2 class={headingClasses} >{title}</h2>}
     <slot />
 </header>
 :
 <div class={containerClasses}  aria-hidden="true">
-    <ContentSectionBandPicture {headerImage} {sectionType} {fetchpriority} {loading} />
+    <ContentSectionBandPicture {headerImage} {sectionType} {fetchpriority} {loading} {placeholder} />
     {title && <div class={headingClasses}>{title}</div>}
     <slot />
 </div>

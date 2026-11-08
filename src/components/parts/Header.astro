@@ -1,6 +1,7 @@
 ---
 import headerImage from '../../assets/aaIMG_1766.jpg';
 import ContentSectionBand from '../ContentSectionBand.astro';
+import { blurPlaceholder } from '../../lib/blurPlaceholder';
 
 type NavItem = {
     href: string;
@@ -16,10 +17,14 @@ export interface Props {
 }
 
 const { mainTitle, subTitle, navItems, lang, navLabel } = Astro.props;
+
+// The photo itself loads lazily so it doesn't compete with the title font (the LCP element)
+const placeholder = await blurPlaceholder('src/assets/aaIMG_1766.jpg');
 ---
 
 <ContentSectionBand
     {headerImage}
+    {placeholder}
     asHeaderTag={true}
 >
     <nav aria-label={navLabel} class="absolute top-0 left-0 w-full font-sans pt-4 pb-16 px-2 z-10 bg-linear-to-b from-black/75 via-black/45 to-transparent">

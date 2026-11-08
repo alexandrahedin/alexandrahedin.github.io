@@ -16,12 +16,7 @@ A portfolio website for soprano Alexandra Hedin, built with Astro and optimized 
 
 #### Managing Events
 
-**Always Show Feature**: Check the "Always Show" checkbox on an event to keep it visible in the Upcoming section even after the date has passed. This is useful for:
-- Featured or important events you want to highlight
-- Events with flexible or ongoing scheduling
-- Past events that should remain visible for reference
-
-Existing events without this field will continue to work normally (auto-hidden after date passes).
+**Always Show**: leave it unticked for normal events. An event disappears from the Upcoming section by itself once its date (and time) has passed, both at build time and in the visitor's browser, so no rebuild is needed. Tick "Always Show" only for an event that should stay visible after its date, for example a featured or ongoing event.
 
 #### Managing Gallery
 
