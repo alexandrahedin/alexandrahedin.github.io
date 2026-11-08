@@ -21,16 +21,14 @@ const { mainTitle, subTitle, navItems, lang, navLabel } = Astro.props;
 <ContentSectionBand
     {headerImage}
     asHeaderTag={true}
-    loading="eager"
-    fetchpriority="high"
 >
     <nav aria-label={navLabel} class="absolute top-0 left-0 w-full font-sans pt-4 pb-16 px-2 z-10 bg-linear-to-b from-black/75 via-black/45 to-transparent">
         <ul class="uppercase text-sm flex justify-center md:justify-end">
             <li>
-                <a class="inline-block px-2 py-1 hover:underline" href="/" lang="en" hreflang="en" aria-label="English" aria-current={lang === 'en' ? 'page' : undefined}>En</a>
+                <a class="inline-block px-2 py-1 hover:underline" href="/" lang="en" hreflang="en" aria-current={lang === 'en' ? 'page' : undefined}>En</a>
             </li>
             <li>
-                <a class="inline-block px-2 py-1 hover:underline relative before:content-[''] before:block before:absolute before:left-0 before:h-3/4 before:w-px before:bg-white" href="/sv/" lang="sv" hreflang="sv" aria-label="Svenska" aria-current={lang === 'sv' ? 'page' : undefined}>Sv</a>
+                <a class="inline-block px-2 py-1 hover:underline relative before:content-[''] before:block before:absolute before:left-0 before:h-3/4 before:w-px before:bg-white" href="/sv/" lang="sv" hreflang="sv" aria-current={lang === 'sv' ? 'page' : undefined}>Sv</a>
             </li>
         </ul>
 

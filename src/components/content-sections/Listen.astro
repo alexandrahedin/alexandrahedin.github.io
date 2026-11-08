@@ -33,7 +33,7 @@ const { title, sectionId, skipLinkText, playVideoLabel = 'Play video', videos } 
                 <lite-vimeo
                     videoid={video.vimeoId}
                     class="[&_>_iframe]:bg-black"
-                    style={`background-image: url('https://i.vimeocdn.com/video/${video.vimeoId}.webp?mw=1600&mh=900&q=70');${video.customContainerStyle}`}
+                    style={video.customContainerStyle || undefined}
                     tabindex="0"
                     role="button"
                     aria-label={`${playVideoLabel}: ${video.title}`}
