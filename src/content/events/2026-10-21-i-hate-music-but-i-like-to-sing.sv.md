@@ -4,7 +4,7 @@ subTitle: ''
 date: 2026-10-21
 time: 12:00
 location: Segeltorps kyrka
-alwaysShow: false
+alwaysShow: true
 performers:
   - name: Alexandra Hedin
     title: sopran

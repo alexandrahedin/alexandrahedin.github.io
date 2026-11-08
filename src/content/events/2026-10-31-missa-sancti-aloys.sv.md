@@ -4,7 +4,7 @@ subTitle: Michael Haydn
 date: 2026-10-31
 time: 16:00
 location: Åhus S:ta Maria kyrka
-alwaysShow: false
+alwaysShow: true
 performers:
   - name: Alexandra Hedin
     title: sopran
